@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Header -->
     <header>
         <div class="header-top clr-back">
             <div class="logo ">
@@ -21,13 +22,59 @@
                 <p>L'e-commerce qui vous ressemble</p>
             </div>
             <div class="header-search center">
-                <input class="header-search-bar" type="text" name="barre de recherche" id="recherche" placeholder="Une envie?" />
-                <input class="header-search-btn" type="reset" value="rechercher" />
+                <form action="recherche" method="POST">
+                    <input class="header-search-bar" type="text" name="barre de recherche" id="recherche" placeholder="Une envie?" />
+                    <input class="header-search-btn" type="reset" value="rechercher" />
+                </form>
             </div>
+
         </div>
         <div class="devise center">Ici pas besoin de chercher pendant des heures, tout est sous vos yeux</div>
     </header>
+
+    <!-- Main -->
+
     <main>
+        <!-- Articles -->
+        <div class="categorie">
+            <a href="orinoco-ours.html">
+                <figure class="categorie-choice">
+                    <div class="categorie-choice-img">
+                        <img class="categorie-choice-img-title" src="./img/teddy-title" alt="une femme tenant un ours en peluche geant">
+                    </div>
+                    <div class="categorie-choice-details">
+                        <h2>Ours en peluche</h2>
+                        <p> à partir de <strong>25€</strong></p>
+
+                    </div>
+                </figure>
+            </a>
+            <a href="orinoco-camera.html">
+                <figure class="categorie-choice">
+                    <div class="categorie-choice-img">
+                        <img class="categorie-choice-img-title" src="./img/camera-title" alt="une camera vintage dans un petit coffre ">
+                    </div>
+                    <div class="categorie-details">
+                        <h2>Camera vintage</h2>
+                        <p> à partir de <strong>90€</strong></p>
+
+                    </div>
+                </figure>
+            </a>
+            <a href="orinoco-meuble.html">
+                <figure class="categorie-choice">
+                    <div class="categorie-choice-img">
+                        <img class="categorie-choice-img-title" src="./img/wood-title.webp" alt="cerne de croissance d'un arbre">
+                    </div>
+                    <div class="categorie-choice-details">
+                        <h2>Meuble en bois</h2>
+                        <p> à partir de <strong>300€</strong></p>
+
+                    </div>
+                </figure>
+            </a>
+
+        </div>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptates ab sit, repellat nesciunt exercitationem quo ipsum impedit officia deleniti alias voluptatum dolores at voluptatibus placeat aperiam eveniet culpa itaque.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptates ab sit, repellat nesciunt exercitationem quo ipsum impedit officia deleniti alias voluptatum dolores at voluptatibus placeat aperiam eveniet culpa itaque.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptates ab sit, repellat nesciunt exercitationem quo ipsum impedit officia deleniti alias voluptatum dolores at voluptatibus placeat aperiam eveniet culpa itaque.</p>
