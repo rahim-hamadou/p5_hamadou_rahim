@@ -13,6 +13,10 @@ img {
     height: 200px;
 }
 
+a {
+    text-decoration: none;
+}
+
 
 /* variable global */
 
@@ -69,4 +73,25 @@ header {
 
 main {
     margin-top: 200px;
+}
+
+
+/* footer */
+
+footer {
+    bottom: 0px;
+    background-color: rgb(142, 119, 163);
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer-social a {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
 }
