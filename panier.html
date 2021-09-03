@@ -5,33 +5,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/png" href="./img/nounours.png" />
+
+    <link rel="stylesheet" href="./style.css">
+    <title>OriNounours-Basket</title>
 </head>
 
 <body>
+    <!-- Header -->
     <header>
-        <div class="header-top">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="./img/logo.png" alt="le logo de l'entreprise:un chariot violet qui precede le nom du site">
-                </a>
-            </div>
-            <div class="header-title center">
-                <p>L'e-commerce qui vous ressemble</p>
-            </div>
-            <div class="header-search center">
-                <input class="header-search-bar" type="text" name="barre de recherche" id="recherche" placeholder="Une envie?" />
-                <input class="header-search-btn" type="reset" value="rechercher" />
-            </div>
+        <div class="header-top clr-back">
+            <a href="index.html">
+                <div class="header-title center">
+                    <p>OriNounours</p>
+                </div>
+            </a>
+            <a href="panier.html">
+                <div>
+                    <i class="fas fa-shopping-basket icon"></i>
+                </div>
+            </a>
         </div>
+        <div class="devise center-text">Ici pas besoin de chercher pendant des heures</div>
     </header>
+    <!-- Main -->
     <main>
+        <div class="banner ">
+            <!-- <img src="./img/teddy-font" alt=""> -->
+            <h1 class="main-title center-text">Tout pour vous apportez du bonheur</h1>
+        </div>
+        <div id="container-ours" class="main-choice">
+
+            <div class="main-choice-products">
+
+            </div>
+
+        </div>
 
     </main>
 
-    <footer>
-
+    <footer id="footer" role="contentinfo">
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div class="center-text">
+                            <p>Vous ne trouvez rien ici ? N'hesitez pas nous rejoindre sur nos reseaux sociaux riches en contenu</p>
+                        </div>
+                        <div class="footer-social">
+                            <div>
+                                <div>
+                                    <a href="https://twitter.com/" aria-label="Lien vers le reseau social Twitter" class="icon"><span class="fa fa-twitter icon-md "></span> Twitter</a
+                                    >
+                                </div>
+                            </div>
+                            <div >
+                                <div >
+                                    <a   href="https://www.facebook.com/" aria-label="Lien vers le reseau social Facebook"
+                                    class="icon"><span class="fa fa-facebook icon-md"></span>Facebook</a
+                                    >
+                                </div>
+                            </div>
+                            
+                            <div >
+                                <div >
+                                    <a  href="https://www.instagram.com/?hl=fr" aria-label="Lien vers le reseau social Instagram"
+                                    class="icon"><span class="fa fa-instagram icon-md"></span>Instagram</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
     </footer>
+    <script  src="https://kit.fontawesome.com/7d8ada606a.js" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
 </body>
-
 </html>

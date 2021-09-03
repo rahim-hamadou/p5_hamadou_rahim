@@ -5,75 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="./img/nounours.png" />
+
     <link rel="stylesheet" href="./style.css">
-    <title>Orinoco</title>
+    <title>OriNounours</title>
 </head>
 
 <body>
     <!-- Header -->
     <header>
         <div class="header-top clr-back">
-            <div class="logo ">
-                <a href="index.html">
-                    <img src="./img/logo.png" alt="le logo de l'entreprise:un chariot violet qui precede le nom du site">
-                </a>
-            </div>
-            <div class="header-title center">
-                <p>L'e-commerce qui vous ressemble</p>
-            </div>
-            <div class="header-search center">
-                <form action="recherche" method="POST">
-                    <input class="header-search-bar" type="text" name="barre de recherche" id="recherche" placeholder="Une envie?" />
-                    <input class="header-search-btn" type="reset" value="rechercher" />
-                </form>
-            </div>
-
+            <a href="index.html">
+                <div class="header-title center">
+                    <p>OriNounours</p>
+                </div>
+            </a>
+            <a href="panier.html">
+                <div>
+                    <i class="fas fa-shopping-basket icon"></i>
+                </div>
+            </a>
         </div>
-        <div class="devise center">Ici pas besoin de chercher pendant des heures, tout est sous vos yeux</div>
+        <div class="devise center-text">
+            <p>Tout pour vous apportez du bonheur</p>
+        </div>
     </header>
-
     <!-- Main -->
-
     <main>
-        <h1>Bienvenue sur Orinoco</h1>
-        <!-- Articles -->
-        <div class="categorie">
-            <a href="orinoco-ours.html">
-                <figure class="categorie-choice">
-                    <div class="categorie-choice-img">
-                        <img class="categorie-choice-img-title" src="./img/teddy-title" alt="une femme tenant un ours en peluche geant">
-                    </div>
-                    <div class="categorie-choice-details">
-                        <h2>Ours en peluche</h2>
-                        <p> à partir de <strong>25€</strong></p>
+        <div class="banner ">
 
-                    </div>
-                </figure>
-            </a>
-            <a href="orinoco-camera.html">
-                <figure class="categorie-choice">
-                    <div class="categorie-choice-img">
-                        <img class="categorie-choice-img-title" src="./img/camera-title" alt="une camera vintage dans un petit coffre ">
-                    </div>
-                    <div class="categorie-details">
-                        <h2>Camera vintage</h2>
-                        <p> à partir de <strong>90€</strong></p>
+            <h1 class="main-title center-text">Il est fait pour vous</h1>
+        </div>
+        <div id="container-ours" class="main-choice">
+            <h2 class="main-title-choice center-text">Nos Propositions</h2>
+            <div id="input">
+                <button id="btn"></button>
+            </div>
+            <div class="main-choice-products" id="products">
 
-                    </div>
-                </figure>
-            </a>
-            <a href="orinoco-meuble.html">
-                <figure class="categorie-choice">
-                    <div class="categorie-choice-img">
-                        <img class="categorie-choice-img-title" src="./img/wood-title.webp" alt="cerne de croissance d'un arbre">
-                    </div>
-                    <div class="categorie-choice-details">
-                        <h2>Meuble en bois</h2>
-                        <p> à partir de <strong>300€</strong></p>
-
-                    </div>
-                </figure>
-            </a>
+            </div>
 
         </div>
 
@@ -84,20 +54,20 @@
             <div>
                 <div>
                     <div>
-                        <div>
+                        <div class="center-text">
                             <p>Vous ne trouvez rien ici ? N'hesitez pas nous rejoindre sur nos reseaux sociaux riches en contenu</p>
                         </div>
                         <div class="footer-social">
                             <div>
                                 <div>
-                                    <a href="https://twitter.com/" aria-label="Lien vers le reseau social Twitter"><span class="fa fa-twitter icon-md "></span> Twitter</a
+                                    <a href="https://twitter.com/" aria-label="Lien vers le reseau social Twitter" class="icon"><span class="fa fa-twitter icon-md "></span> Twitter</a
                                     >
                                 </div>
                             </div>
                             <div >
                                 <div >
                                     <a   href="https://www.facebook.com/" aria-label="Lien vers le reseau social Facebook"
-                                        ><span class="fa fa-facebook icon-md"></span>Facebook</a
+                                    class="icon"><span class="fa fa-facebook icon-md"></span>Facebook</a
                                     >
                                 </div>
                             </div>
@@ -105,7 +75,7 @@
                             <div >
                                 <div >
                                     <a  href="https://www.instagram.com/?hl=fr" aria-label="Lien vers le reseau social Instagram"
-                                        ><span class="fa fa-instagram icon-md"></span>Instagram</a
+                                    class="icon"><span class="fa fa-instagram icon-md"></span>Instagram</a
                                     >
                                 </div>
                             </div>
@@ -113,10 +83,10 @@
                     </div>
                 </div>
             </div>
-          
+           
         </div>
     </footer>
     <script  src="https://kit.fontawesome.com/7d8ada606a.js" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
 </body>
-
 </html>
