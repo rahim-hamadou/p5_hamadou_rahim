@@ -10,7 +10,8 @@ btn.onclick = () => {
         //     console.table(res);
         // })
         .then(function(res) {
-            products.textContent = `nos produits ${ res }`;
+            // products.textContent = `nos produits ${ res }`;
+            products.appendChild(res);
         })
 
 }
