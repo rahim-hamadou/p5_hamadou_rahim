@@ -35,4 +35,4 @@ btn.onclick = () => {
 
 // test js
 const footer = document.querySelector("footer");
-footer.style.background = "violet";
+footer.style.background = "yellow";
