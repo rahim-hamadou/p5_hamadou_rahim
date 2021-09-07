@@ -32,3 +32,7 @@ btn.onclick = () => {
 			products.appendChild(res);
 		});
 };
+
+// test js
+const footer = document.querySelector("footer");
+footer.style.background = "violet";
