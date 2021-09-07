@@ -1,92 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" type="image/png" href="./img/nounours.png" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="./img/nounours.png" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>OriNounours</title>
+	</head>
 
-    <link rel="stylesheet" href="./style.css">
-    <title>OriNounours</title>
-</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<div class="header-top clr-back">
+				<a href="index.html">
+					<div class="header-title center">
+						<p>OriNounours</p>
+					</div>
+				</a>
+				<a href="panier.html">
+					<div>
+						<i class="fas fa-shopping-basket icon"></i>
+					</div>
+				</a>
+			</div>
+			<div class="devise center-text">
+				<p>Tout pour vous apportez du bonheur</p>
+			</div>
+		</header>
+		<!-- Main -->
+		<main>
+			<div class="banner">
+				<h1 class="main-title center-text">Il est fait pour vous</h1>
+			</div>
+			<div id="container-ours" class="main-choice">
+				<h2 class="main-title-choice center-text">Nos Propositions</h2>
+				<div id="input">
+					<button id="btn"></button>
+				</div>
+				<div class="main-choice-products" id="products"></div>
+			</div>
+		</main>
 
-<body>
-    <!-- Header -->
-    <header>
-        <div class="header-top clr-back">
-            <a href="index.html">
-                <div class="header-title center">
-                    <p>OriNounours</p>
-                </div>
-            </a>
-            <a href="panier.html">
-                <div>
-                    <i class="fas fa-shopping-basket icon"></i>
-                </div>
-            </a>
-        </div>
-        <div class="devise center-text">
-            <p>Tout pour vous apportez du bonheur</p>
-        </div>
-    </header>
-    <!-- Main -->
-    <main>
-        <div class="banner ">
+		<footer id="footer" role="contentinfo">
+			<div>
+				<div>
+					<div>
+						<div>
+							<div class="center-text">
+								<p>
+									Vous ne trouvez rien ici ? N'hesitez pas nous rejoindre sur nos reseaux sociaux
+									riches en contenu
+								</p>
+							</div>
+							<div class="footer-social">
+								<div>
+									<div>
+										<a
+											href="https://twitter.com/"
+											aria-label="Lien vers le reseau social Twitter"
+											class="icon"
+											><span class="fa fa-twitter icon-md"></span> Twitter</a
+										>
+									</div>
+								</div>
+								<div>
+									<div>
+										<a
+											href="https://www.facebook.com/"
+											aria-label="Lien vers le reseau social Facebook"
+											class="icon"
+											><span class="fa fa-facebook icon-md"></span>Facebook</a
+										>
+									</div>
+								</div>
 
-            <h1 class="main-title center-text">Il est fait pour vous</h1>
-        </div>
-        <div id="container-ours" class="main-choice">
-            <h2 class="main-title-choice center-text">Nos Propositions</h2>
-            <div id="input">
-                <button id="btn"></button>
-            </div>
-            <div class="main-choice-products" id="products">
-
-            </div>
-
-        </div>
-
-    </main>
-
-    <footer id="footer" role="contentinfo">
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <div class="center-text">
-                            <p>Vous ne trouvez rien ici ? N'hesitez pas nous rejoindre sur nos reseaux sociaux riches en contenu</p>
-                        </div>
-                        <div class="footer-social">
-                            <div>
-                                <div>
-                                    <a href="https://twitter.com/" aria-label="Lien vers le reseau social Twitter" class="icon"><span class="fa fa-twitter icon-md "></span> Twitter</a
-                                    >
-                                </div>
-                            </div>
-                            <div >
-                                <div >
-                                    <a   href="https://www.facebook.com/" aria-label="Lien vers le reseau social Facebook"
-                                    class="icon"><span class="fa fa-facebook icon-md"></span>Facebook</a
-                                    >
-                                </div>
-                            </div>
-                            
-                            <div >
-                                <div >
-                                    <a  href="https://www.instagram.com/?hl=fr" aria-label="Lien vers le reseau social Instagram"
-                                    class="icon"><span class="fa fa-instagram icon-md"></span>Instagram</a
-                                    >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           
-        </div>
-    </footer>
-    <script  src="https://kit.fontawesome.com/7d8ada606a.js" crossorigin="anonymous"></script>
-    <script src="./app.js"></script>
-</body>
+								<div>
+									<div>
+										<a
+											href="https://www.instagram.com/?hl=fr"
+											aria-label="Lien vers le reseau social Instagram"
+											class="icon"
+											><span class="fa fa-instagram icon-md"></span>Instagram</a
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="https://kit.fontawesome.com/7d8ada606a.js" crossorigin="anonymous"></script>
+		<!-- <script src="./app.js"></script> -->
+		<script src="./dist/polyfill.bundle.js"></script>
+		<script src="./dist/app.bundle.js"></script>
+	</body>
 </html>
