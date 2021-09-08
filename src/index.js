@@ -32,4 +32,4 @@ showContent();
 
 // test js
 const footer = document.querySelector("footer");
-footer.style.background = "red";
+footer.style.background = "violet";
