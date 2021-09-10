@@ -38,6 +38,10 @@ fetch("http://localhost:3000/api/teddies")
 		for (let i = 0; i < data.length; i++) {
 			//on itere dans les elements de response
 
+			const products = [data[i]];
+			//creation d'un tableau avec les differents produits
+			console.log(products);
+
 			let newLi = document.createElement("li");
 			let newTitreCarte = document.createElement("h2");
 			let newBodyCarte = document.createElement("p");
@@ -52,7 +56,7 @@ fetch("http://localhost:3000/api/teddies")
 			// newTitreCarte.innerText = data[i].title;
 			newBodyCarte.innerText = data[i].description;
 			// newBodyCarte.innerText = data[i].body;
-			newPrice.innerText = data[i].price;
+			newPrice.innerText = data[i].price / 100 + " €";
 			//on apporte du contenu aux elements cree par le biais de chaque element [i] de data.
 
 			newImg.setAttribute("src", data[i].imageUrl);
@@ -73,4 +77,6 @@ fetch("http://localhost:3000/api/teddies")
 				//creation de la fonction qui redirige vers la page produits
 			});
 		}
+
+		//page produit
 	});
