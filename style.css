@@ -43,9 +43,8 @@ a:active {
 
 header {
 	width: 100%;
-	border: 1px solid green;
+
 	background: rgb(128, 72, 35);
-	/* background: rgb(158, 97, 187); */
 }
 
 .header-top {
@@ -63,7 +62,6 @@ header {
 }
 
 .header-title {
-	border: 1px solid black;
 	padding: 5px 10px;
 }
 
@@ -78,6 +76,12 @@ header {
 .devise p {
 	padding: 8px 0;
 	margin: 0 auto;
+}
+.shopping-icon {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
 }
 
 /* main */
@@ -100,11 +104,71 @@ header {
 	bottom: 0;
 }
 
+.main-choice button {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
+.main-choice button:hover {
+	background: rgb(128, 72, 35);
+	transition: 200ms;
+}
+.main-choice button h2 {
+	color: black;
+	margin: 10px 5px;
+}
+.main-choice-products {
+	border: 2px solid green;
+	margin: 15px;
+}
+.main-choice-products ul {
+	text-align: center;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	margin: auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: center;
+	align-items: stretch;
+}
+.main-choice-products li {
+	border: 2px solid black;
+	padding: 15px;
+	margin-bottom: 20px;
+	width: 33%;
+}
+.main-choice-products li img {
+	width: 100%;
+	/* object-fit: cover; */
+}
+.main-choice-products button {
+	margin-top: 10px;
+	line-height: 60px;
+	font-weight: bold;
+	padding: 0 40px;
+	background: rgb(255, 255, 255);
+	border: none;
+	transition: background-color;
+}
+.main-choice-products button:hover {
+	background: rgb(128, 72, 35);
+	border-style: inset;
+	transition: 200ms;
+}
+.main-choice-products h2,
+p,
+button {
+	margin: 10px auto;
+}
+
 /* footer */
 
 footer {
-	background-color: rgb(148, 90, 51);
-	position: absolute;
+	background: rgb(128, 72, 35);
 	bottom: 0;
 	width: 100%;
 	padding-bottom: 15px;
@@ -134,4 +198,28 @@ footer span {
 
 .icon:hover {
 	color: rgba(255, 255, 255, 0.336);
+}
+
+/* responsive */
+@media screen and (max-width: 870px) {
+	/* main */
+
+	.main-choice-products ul {
+		text-align: center;
+		padding: 0;
+		list-style-type: none;
+		display: flex;
+		margin: auto;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-content: center;
+		align-items: stretch;
+	}
+	.main-choice-products li {
+		border: 2px solid black;
+		padding: 15px;
+		margin-bottom: 15px;
+		width: 90%;
+	}
 }
