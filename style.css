@@ -136,7 +136,9 @@ header {
 	align-items: stretch;
 }
 .main-choice-products li {
+	background-color: rgb(128, 72, 35);
 	border: 2px solid black;
+	border-radius: 15px;
 	padding: 15px;
 	margin-bottom: 20px;
 	width: 33%;
@@ -158,6 +160,7 @@ header {
 	background: rgb(128, 72, 35);
 	border-style: inset;
 	transition: 200ms;
+	color: #fff;
 }
 .main-choice-products h2,
 p,

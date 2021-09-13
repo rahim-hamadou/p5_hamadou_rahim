@@ -1,7 +1,7 @@
 //-------------------- Test page produit.js
-const test = document.querySelector(".main-title-choice");
 
-test.style.background = "violet";
+// const test = document.querySelector(".main-title-choice");
+// test.style.background = "violet";
 
 // -------------------recuperation de l'id url par produit
 
@@ -47,13 +47,14 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		let priceProduit = document.createElement("p");
 		let formProduit = document.createElement("form");
 		//creation d'un formulaire
-		let labelCouleur = document.createElement("input");
-		let labelChoix = document.createElement("select");
-		let choixCouleur = document.createElement("option");
 
+		let labelChoix = document.createElement("select");
+		labelChoix.setAttribute = ("size", "1");
+		let choixCouleur = document.createElement("option");
 		//on cree les element html
+
 		choixCouleur = dataProduit.colors;
-		console.log(formProduit);
+
 		for (let i = 0; i < dataProduit.colors.length; i++) {
 			let choixCouleur = document.createElement("option");
 			choixCouleur.setAttribute("value", dataProduit.colors[i]);
@@ -67,8 +68,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		//on cree l'image
 		let btnValideProduit = document.createElement("button");
 		//creation du bouton
-		// let formProduit = document.createElement("form");
-		// //creation d'un formulaire
+
 		let optionProduit = document.createElement("input");
 
 		// On crée une selection
@@ -94,18 +94,24 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		titreBodyProduit.innerText = dataProduit.description;
 		// newBodyCarte.innerText = data[i].body;
 		priceProduit.innerText = dataProduit.price / 100 + " €";
-		//on apporte du contenu aux elements cree par le biais de chaque element [i] de data.
+		//on apporte du contenu aux elements cree par le biais de chaque element [i] de dataProduit.
 
 		liProduit.appendChild(imgProduit);
 		liProduit.appendChild(titreCarteProduit);
 		liProduit.appendChild(titreBodyProduit);
 		liProduit.appendChild(priceProduit);
 		// affichage information
+		for (let i = 0; i < dataProduit.colors.length; i++) {
+			let choixCouleur = document.createElement("option");
+			choixCouleur.setAttribute("value", dataProduit.colors[i]);
+			choixCouleur.text = dataProduit.colors[i];
+			// liProduit.appendChild(choixCouleur);
 
-		liProduit.appendChild(formProduit);
-		formProduit.appendChild(labelCouleur);
-		labelChoix.appendChild(labelCouleur);
-		labelCouleur.appendChild(choixCouleur);
+			labelChoix.appendChild(choixCouleur);
+			formProduit.appendChild(labelChoix);
+			liProduit.appendChild(formProduit);
+			//on ajoute les options au select qui est ajouter au form qui est ajouter au li a son tour
+		}
 
 		// choix couleurs
 
