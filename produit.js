@@ -31,10 +31,7 @@ const id = urlSearchParams.get("id");
 
 let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 	.then((reponse) => reponse.json())
-	// .then((dataProduit) => {
-	// 	console.log(dataProduit);
-	// 	// on verifie ce que nous retourne le fetch
-	// })
+
 	.then((dataProduit) => {
 		// ---------Preparer la page a recevoir le contenu du produit
 		const shoppingProduit = document.querySelector(".shopping-product");
@@ -44,30 +41,37 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		const btnProduit = document.querySelector(".btn");
 		// Selection de la cible du html dynamique
 
-		// liaison de l'image du produit via le data de la response fetch
-
 		let liProduit = document.createElement("li");
 		let titreCarteProduit = document.createElement("h2");
 		let titreBodyProduit = document.createElement("p");
 		let priceProduit = document.createElement("p");
+		let formProduit = document.createElement("form");
+		//creation d'un formulaire
+		let labelCouleur = document.createElement("input");
+		let labelChoix = document.createElement("select");
+		let choixCouleur = document.createElement("option");
+
 		//on cree les element html
+		choixCouleur = dataProduit.colors;
+		console.log(formProduit);
+		for (let i = 0; i < dataProduit.colors.length; i++) {
+			let choixCouleur = document.createElement("option");
+			choixCouleur.setAttribute("value", dataProduit.colors[i]);
+			choixCouleur.text = dataProduit.colors[i];
+			// liProduit.appendChild(choixCouleur);
+		}
+
 		let imgProduit = document.createElement("img");
 		imgProduit.setAttribute("src", dataProduit.imageUrl);
 		imgProduit.setAttribute("alt", "image de peluche");
 		//on cree l'image
 		let btnValideProduit = document.createElement("button");
 		//creation du bouton
-		let formProduit = document.createElement("form");
-		//creation d'un formulaire
+		// let formProduit = document.createElement("form");
+		// //creation d'un formulaire
 		let optionProduit = document.createElement("input");
-		optionProduit.type = "radio";
-		optionProduit.for = "optionProduit";
-		optionProduit.label = "choixCouleur";
-		optionProduit.value = dataProduit.colors;
-		let labelCouleur = document.createElement("label");
-		labelCouleur.htmlFor = "couleurs";
 
-		// On crée un form
+		// On crée une selection
 
 		optionProduit.action = "/cgi-bin/some.cgi";
 		// On y ajoute des attributs action et method
@@ -78,9 +82,11 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		//on cree les elements qui vont servir de cible.
 
 		btnValideProduit.innerHTML = "Ajouter au panier";
-		btnValideProduit.type = "submit";
-		btnValideProduit.name = "btnValideProduit";
-		btnValideProduit.value = "./panier.html";
+		// btnValideProduit.type = "submit";
+		// btnValideProduit.name = "btnValideProduit";
+
+		btnValideProduit.setAttribute("src", "./panier.html");
+		btnValideProduit.setAttribute("alt", "allons au panier avec ce bouton");
 		//creation du bouton panier et de sa destination
 
 		titreCarteProduit.innerText = dataProduit.name;
@@ -94,16 +100,19 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		liProduit.appendChild(titreCarteProduit);
 		liProduit.appendChild(titreBodyProduit);
 		liProduit.appendChild(priceProduit);
-
-		formProduit.appendChild(optionProduit);
-		liProduit.appendChild(labelCouleur);
+		// affichage information
 
 		liProduit.appendChild(formProduit);
+		formProduit.appendChild(labelCouleur);
+		labelChoix.appendChild(labelCouleur);
+		labelCouleur.appendChild(choixCouleur);
+
+		// choix couleurs
+
 		liProduit.appendChild(btnValideProduit);
 		// On l'ajoute au corps du document
 
 		//on ajoute donc les elements a la cible (les li cree dynamiquement)
-		console.log(listeProduits);
 
 		listeProduits.appendChild(liProduit);
 		// //enfin on ajoutes ces li au ul principale
