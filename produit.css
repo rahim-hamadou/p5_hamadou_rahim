@@ -120,7 +120,7 @@ header {
 	margin: 10px 5px;
 }
 .main-choice-products {
-	border: 2px solid green;
+	/* border: 2px solid green; */
 	margin: 15px;
 }
 .main-choice-products ul {
@@ -166,9 +166,6 @@ button {
 }
 
 .shopping-product {
-	width: 200px;
-	height: 200px;
-	background: gray;
 }
 
 /* footer */
