@@ -40,7 +40,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		const shoppingProduit = document.querySelector(".shopping-product");
 		// console.log(dataProduit);
 		const listeProduits = document.querySelector(".listeProduits");
-		console.log(listeProduits);
+		// console.log(listeProduits);
 		const btnProduit = document.querySelector(".btn");
 		// Selection de la cible du html dynamique
 
@@ -68,7 +68,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		labelCouleur.htmlFor = "couleurs";
 
 		// On crée un form
-		console.log(optionProduit);
+
 		optionProduit.action = "/cgi-bin/some.cgi";
 		// On y ajoute des attributs action et method
 		optionProduit.method = "POST";
@@ -76,7 +76,6 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		// On appelle la méhtode submit pour l'envoyer
 
 		//on cree les elements qui vont servir de cible.
-		console.log(btnValideProduit);
 
 		btnValideProduit.innerHTML = "Ajouter au panier";
 		btnValideProduit.type = "submit";
@@ -98,7 +97,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 
 		formProduit.appendChild(optionProduit);
 		liProduit.appendChild(labelCouleur);
-		console.log(labelCouleur);
+
 		liProduit.appendChild(formProduit);
 		liProduit.appendChild(btnValideProduit);
 		// On l'ajoute au corps du document
