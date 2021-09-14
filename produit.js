@@ -21,6 +21,7 @@ const urlSearchParams = new URLSearchParams(queryString_url_id);
 // console.log(urlSearchParams);
 
 const id = urlSearchParams.get("id");
+console.log(id);
 // recuperation de l'id via la methode get du constructor (recupere l'element id= dans l'url)
 // console.log(id);
 //on verifie l'id par parge produit
@@ -50,6 +51,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 
 		let labelChoix = document.createElement("select");
 		labelChoix.setAttribute = ("size", "1");
+		labelChoix.classList.add("select-couleur");
 		let choixCouleur = document.createElement("option");
 		//on cree les element html
 
@@ -67,27 +69,16 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		imgProduit.setAttribute("alt", "image de peluche");
 		//on cree l'image
 		let btnValideProduit = document.createElement("button");
+		btnValideProduit.classList.add("btn-validation");
 		//creation du bouton
 
-		let optionProduit = document.createElement("input");
-
-		// On crée une selection
-
-		optionProduit.action = "/cgi-bin/some.cgi";
-		// On y ajoute des attributs action et method
-		optionProduit.method = "POST";
-		// optionProduit.submit();
-		// On appelle la méhtode submit pour l'envoyer
+		btnValideProduit.setAttribute("type", "submit");
+		btnValideProduit.setAttribute("name", "btn-envoyer");
+		//creation du bouton panier et de sa destination
 
 		//on cree les elements qui vont servir de cible.
 
 		btnValideProduit.innerHTML = "Ajouter au panier";
-		// btnValideProduit.type = "submit";
-		// btnValideProduit.name = "btnValideProduit";
-
-		btnValideProduit.setAttribute("src", "./panier.html");
-		btnValideProduit.setAttribute("alt", "allons au panier avec ce bouton");
-		//creation du bouton panier et de sa destination
 
 		titreCarteProduit.innerText = dataProduit.name;
 		// newTitreCarte.innerText = data[i].title;
@@ -122,4 +113,35 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 
 		listeProduits.appendChild(liProduit);
 		// //enfin on ajoutes ces li au ul principale
+
+		// ------------------panier-------------------
+		const classChoixCouleur = document.querySelector(".select-couleur");
+
+		const btnPanier = document.querySelector(".btn-validation");
+
+		//ecouter le panier
+
+		btnValideProduit.addEventListener("click", (e) => {
+			e.preventDefault();
+
+			// -----------choix de couleur l'user-------
+			const choixUserCouleur = classChoixCouleur.value;
+			// recuperation du choix de couleur
+
+			const nameUserProduit = dataProduit.name;
+			const idUserProduit = id;
+			const couleurUserProduit = choixUserCouleur;
+			const prixUserProduit = dataProduit.price / 100;
+			// creation des const servant a creer l'objet selectionUser
+
+			let selectionUser = {
+				nomProduit: nameUserProduit,
+				idProduit: idUserProduit,
+				optionCouleur: choixUserCouleur,
+				quantité: "1",
+				prix: prixUserProduit,
+			};
+			console.log(selectionUser);
+		});
 	});
+// le local storage
