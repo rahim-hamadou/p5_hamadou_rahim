@@ -21,7 +21,7 @@ const urlSearchParams = new URLSearchParams(queryString_url_id);
 // console.log(urlSearchParams);
 
 const id = urlSearchParams.get("id");
-console.log(id);
+// console.log(id);
 // recuperation de l'id via la methode get du constructor (recupere l'element id= dans l'url)
 // console.log(id);
 //on verifie l'id par parge produit
@@ -137,11 +137,57 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			let selectionUser = {
 				nomProduit: nameUserProduit,
 				idProduit: idUserProduit,
-				optionCouleur: choixUserCouleur,
+				optionCouleur: couleurUserProduit,
 				quantité: "1",
 				prix: prixUserProduit,
 			};
 			console.log(selectionUser);
+
+			// le local storage
+
+			// declaration de variable a stocker dans le local storage
+			let selectionUserLocalStorage = JSON.parse(localStorage.getItem("produitUser"));
+			// json.parse afin de convertir au format JavaScript les fichier format JSON du local storage
+			// console.log(selectionUserLocalStorage);
+			//retourne null si il ny'a pas de "produit" dans le local storage
+
+			// creation d'une fonction pour rediriger l'user
+			const prochaineEtape = () => {
+				if (
+					window.confirm(
+						"le produit " +
+							nameUserProduit +
+							" de couleur " +
+							couleurUserProduit +
+							" à bien été ajouté au panier consulter le panier avec OK ou retourner à l'accueil avec ANNULER",
+					)
+				) {
+					window.location.href = "./panier.html";
+				} else {
+					window.location.href = "./index.html";
+				}
+			};
+
+			//creation de la condition
+			//s'il ya des produit
+			if (selectionUserLocalStorage) {
+				selectionUserLocalStorage.push(selectionUser);
+				localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
+				// console.log(selectionUserLocalStorage);
+				// on verifie le resultat
+				prochaineEtape();
+			}
+			//s'il a pas de "produit"
+			else {
+				selectionUserLocalStorage = [];
+				//on cree un tableau qui va contenir les choix
+				selectionUserLocalStorage.push(selectionUser);
+				//on y ajoute les choix
+				localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
+				// on ajoute ce tableau au local storage
+				// console.log(selectionUserLocalStorage);
+				// on verifie le resultat
+				prochaineEtape();
+			}
 		});
 	});
-// le local storage
