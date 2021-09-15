@@ -23,23 +23,24 @@ const totalPanier = document.createElement("div");
 totalPanier.classList.add("total-prix");
 totalPanier.innerHTML = "le total du panier est de : ";
 // choix final
+const btnProduitPanier = document.createElement("button");
+btnProduitPanier.classList.add = "btn-produit-panier";
+btnProduitPanier.innerHTML = "Supprimer l'article";
+// creation du btn suppression article
 const finaliserPanier = document.createElement("div");
 finaliserPanier.classList.add("finaliser-panier");
 // bloc final
 const btnValidationPanier = document.createElement("button");
 btnValidationPanier.classList.add("validation");
 btnValidationPanier.innerHTML = "Validation";
+// validation pour commande
 const btnAnnulationPanier = document.createElement("button");
 btnAnnulationPanier.classList.add("annulation");
 btnAnnulationPanier.innerHTML = "annulation";
+// annulatio npour vider le panier
 // creation des btn de finalisation
 
 // creation des cibles
-console.log(titrePanier);
-console.log(listeGlobalePanier);
-console.log(totalGlobalPanier);
-console.log(totalPanier);
-console.log(finaliserPanier);
 
 resumePanier.appendChild(titrePanier);
 resumePanier.appendChild(listeGlobalePanier);
@@ -50,13 +51,13 @@ totalGlobalPanier.appendChild(finaliserPanier);
 resumePanier.appendChild(totalGlobalPanier);
 
 // ajout du contenu dans la page panier
-console.log(resumePanier);
+// console.log(resumePanier);
 
 // creation dynamique du panier
-if (selectionUserLocalStorage === null) {
+if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	listeGlobalePanier.appendChild(panierVide);
 	console.log("je suis vide");
-	// panier vide
+	// panier non rempli ou vider
 } else {
 	let structurePanier = [];
 	for (let i = 0; i < selectionUserLocalStorage.length; i++) {
@@ -71,7 +72,7 @@ if (selectionUserLocalStorage === null) {
 			" €";
 		// const incrementationProduit = document.createElement("input");
 		// listeDetailProduitPanier.appendChild(incrementationProduit);
-		// // verifier la presence d'un article dans le panier
+		// verifier la presence d'un article dans le panier
 		const btnProduitPanier = document.createElement("button");
 		btnProduitPanier.classList.add = "btn-produit-panier";
 		btnProduitPanier.innerHTML = "Supprimer l'article";
@@ -84,4 +85,29 @@ if (selectionUserLocalStorage === null) {
 	}
 	console.log("je ne suis pas vide");
 	//si le panier n'est pas vide
+}
+
+let listeBtnProduitPanier = document.querySelectorAll(".recap-produits li button ");
+console.log(listeBtnProduitPanier);
+// creation d'une liste btn suppression d'article
+
+for (let i = 0; i < listeBtnProduitPanier.length; i++) {
+	listeBtnProduitPanier[i].addEventListener("click", (e) => {
+		e.preventDefault();
+		let idProduitSuppression = selectionUserLocalStorage[i].idProduit;
+		// creation de la variable de l'id du produit au clique du btn
+
+		selectionUserLocalStorage = selectionUserLocalStorage.filter(
+			(element) => element.idProduit !== idProduitSuppression,
+		);
+		//creation d'une fonction de suppression par elimination
+		// console.log(selectionUserLocalStorage);
+
+		localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
+		// envoie de la nouvelle valeur de la variable vers le locale storage
+		// console.log(selectionUserLocalStorage);
+		alert("la selection a bien été supprimée");
+		window.location.href = "./panier.html";
+		// message d'information a l'user et refresh page pour mettre a jour l'affichage
+	});
 }

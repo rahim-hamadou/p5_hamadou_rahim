@@ -229,8 +229,13 @@ footer span {
 }
 .recap-produits li {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	align-items: center;
 }
+.recap-produits li button {
+	margin: auto;
+}
+
 .total-produit {
 	display: flex;
 	justify-content: space-around;
@@ -251,6 +256,7 @@ footer span {
 .finaliser-panier button {
 	margin: 15px 10px;
 }
+
 /* responsive */
 @media screen and (max-width: 870px) {
 	/* main */
