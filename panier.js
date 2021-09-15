@@ -69,6 +69,9 @@ if (selectionUserLocalStorage === null) {
 			" au prix de : " +
 			selectionUserLocalStorage[i].prix +
 			" €";
+		// const incrementationProduit = document.createElement("input");
+		// listeDetailProduitPanier.appendChild(incrementationProduit);
+		// // verifier la presence d'un article dans le panier
 		const btnProduitPanier = document.createElement("button");
 		btnProduitPanier.classList.add = "btn-produit-panier";
 		btnProduitPanier.innerHTML = "Supprimer l'article";
