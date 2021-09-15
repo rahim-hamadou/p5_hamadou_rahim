@@ -151,6 +151,14 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			// console.log(selectionUserLocalStorage);
 			//retourne null si il ny'a pas de "produit" dans le local storage
 
+			// creation d'une fonction pour ajouter au local storage
+			const mettreDansLocaleStorage = () => {
+				selectionUserLocalStorage.push(selectionUser);
+				//on  ajoute les choix de l'user
+				localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
+				// on ajoute ce tableau au local storage
+			};
+
 			// creation d'une fonction pour rediriger l'user
 			const prochaineEtape = () => {
 				if (
@@ -171,22 +179,14 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			//creation de la condition
 			//s'il ya des produit
 			if (selectionUserLocalStorage) {
-				selectionUserLocalStorage.push(selectionUser);
-				localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
-				// console.log(selectionUserLocalStorage);
-				// on verifie le resultat
+				mettreDansLocaleStorage();
 				prochaineEtape();
 			}
 			//s'il a pas de "produit"
 			else {
 				selectionUserLocalStorage = [];
-				//on cree un tableau qui va contenir les choix
-				selectionUserLocalStorage.push(selectionUser);
-				//on y ajoute les choix
-				localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
-				// on ajoute ce tableau au local storage
-				// console.log(selectionUserLocalStorage);
-				// on verifie le resultat
+				//on cree un tableau qui va contenir les choix vu qu'il n'en existe pas
+				mettreDansLocaleStorage();
 				prochaineEtape();
 			}
 		});

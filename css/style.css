@@ -90,7 +90,7 @@ header {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	background-image: url(./img/teddy-font);
+	background-image: url(../img/teddy-font);
 	background-position: center;
 	height: 250px;
 	background-size: cover;
@@ -202,7 +202,55 @@ footer span {
 .icon:hover {
 	color: rgba(255, 255, 255, 0.336);
 }
+/* Panier */
+.panier-global {
+	margin: auto;
+	background: beige;
+	width: 90%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+.le-panier {
+	text-align: center;
+	width: auto;
 
+	background: blue;
+}
+.recap-produits {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	list-style: none;
+	/* text-align: center; */
+	width: auto;
+	padding: 0;
+	background: rgb(81, 81, 127);
+}
+.recap-produits li {
+	display: flex;
+	flex-direction: column;
+}
+.total-produit {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	align-items: center;
+	width: auto;
+
+	background: rgb(81, 81, 90);
+}
+.total-prix {
+	text-align: center;
+}
+.finaliser-panier {
+	display: flex;
+	justify-content: space-around;
+}
+
+.finaliser-panier button {
+	margin: 15px 10px;
+}
 /* responsive */
 @media screen and (max-width: 870px) {
 	/* main */
