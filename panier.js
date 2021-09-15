@@ -14,6 +14,7 @@ const listeGlobalePanier = document.createElement("ul");
 listeGlobalePanier.classList.add("recap-produits");
 // block article
 const panierVide = document.createElement("li");
+panierVide.classList.add("panier-vide");
 panierVide.innerHTML = "Votre panier est vide";
 //creation du message en cas de panier vide
 const totalGlobalPanier = document.createElement("div");
@@ -21,7 +22,6 @@ totalGlobalPanier.classList.add("total-produit");
 // bloc final
 const totalPanier = document.createElement("div");
 totalPanier.classList.add("total-prix");
-totalPanier.innerHTML = "le total du panier est de : ";
 // choix final
 const btnProduitPanier = document.createElement("button");
 btnProduitPanier.classList.add = "btn-produit-panier";
@@ -32,12 +32,12 @@ finaliserPanier.classList.add("finaliser-panier");
 // bloc final
 const btnValidationPanier = document.createElement("button");
 btnValidationPanier.classList.add("validation");
-btnValidationPanier.innerHTML = "Validation";
+btnValidationPanier.innerHTML = "Commander";
 // validation pour commande
 const btnAnnulationPanier = document.createElement("button");
 btnAnnulationPanier.classList.add("annulation");
-btnAnnulationPanier.innerHTML = "annulation";
-// annulatio npour vider le panier
+btnAnnulationPanier.innerHTML = "Annuler";
+// annulation pour vider le panier
 // creation des btn de finalisation
 
 // creation des cibles
@@ -50,7 +50,7 @@ finaliserPanier.appendChild(btnAnnulationPanier);
 totalGlobalPanier.appendChild(finaliserPanier);
 resumePanier.appendChild(totalGlobalPanier);
 
-// ajout du contenu dans la page panier
+//-------------------------- ajout du contenu dans la page panier
 // console.log(resumePanier);
 
 // creation dynamique du panier
@@ -88,7 +88,7 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 }
 
 let listeBtnProduitPanier = document.querySelectorAll(".recap-produits li button ");
-console.log(listeBtnProduitPanier);
+// console.log(listeBtnProduitPanier);
 // creation d'une liste btn suppression d'article
 
 for (let i = 0; i < listeBtnProduitPanier.length; i++) {
@@ -107,7 +107,45 @@ for (let i = 0; i < listeBtnProduitPanier.length; i++) {
 		// envoie de la nouvelle valeur de la variable vers le locale storage
 		// console.log(selectionUserLocalStorage);
 		alert("la selection a bien été supprimée");
+		// message d'information a l'user
 		window.location.href = "./panier.html";
 		// message d'information a l'user et refresh page pour mettre a jour l'affichage
 	});
 }
+
+// ------------------------creation d'un btn vider le panier afin de supprimer le produit par son id
+
+btnAnnulationPanier.addEventListener("click", (e) => {
+	e.preventDefault();
+	// ecoute sur le bouton d'annulation
+	localStorage.removeItem("produitUser");
+	// retrait de l'objet entier du local storage
+	alert("Le panier a bien été vidé");
+	// message d'information a l'user
+	window.location.href = "./panier.html";
+	// rechargement de la page pour voir les modifications
+});
+
+// -------------calcul de la somme des articles
+
+let sommePrixProduitPanier = [];
+for (let i = 0; i < selectionUserLocalStorage.length; i++) {
+	let prixProduitPanier = selectionUserLocalStorage[i].prix;
+	// creation d ela variable qui regroupe les prix
+	// console.log(sommePrixProduitPanier);
+	// verification de l'affichage du prix d'article
+
+	sommePrixProduitPanier.push(prixProduitPanier);
+	// mettre tous les prix dans un tableau
+}
+
+const addition = (accumulator, currentValue) => accumulator + currentValue;
+// addition des prix contenu dans le tableau avec .reduce
+const prixTotalPanier = sommePrixProduitPanier.reduce(addition, 0);
+// console.log(prixTotalPanier);
+// application de la fonction reduce + test ok
+
+totalPanier.innerHTML = "le total du panier est de : " + prixTotalPanier + " €";
+// affichage dans le html de la somme des prix d'article panier
+
+console.log(totalPanier);

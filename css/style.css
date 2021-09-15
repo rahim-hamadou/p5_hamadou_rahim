@@ -217,6 +217,9 @@ footer span {
 
 	background: blue;
 }
+.panier-vide {
+	margin: auto;
+}
 .recap-produits {
 	display: flex;
 	flex-direction: column;
