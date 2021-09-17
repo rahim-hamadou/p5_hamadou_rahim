@@ -104,6 +104,9 @@ header {
 	bottom: 0;
 }
 
+.main-choice {
+	margin-bottom: 20px;
+}
 .main-choice button {
 	margin-top: 20px;
 	display: flex;

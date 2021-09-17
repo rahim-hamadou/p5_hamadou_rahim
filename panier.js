@@ -128,24 +128,33 @@ btnAnnulationPanier.addEventListener("click", (e) => {
 
 // -------------calcul de la somme des articles
 
-let sommePrixProduitPanier = [];
-for (let i = 0; i < selectionUserLocalStorage.length; i++) {
-	let prixProduitPanier = selectionUserLocalStorage[i].prix;
-	// creation d ela variable qui regroupe les prix
-	// console.log(sommePrixProduitPanier);
-	// verification de l'affichage du prix d'article
+if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
+	listeGlobalePanier.appendChild(panierVide);
+	console.log("je suis vide");
+	// panier non rempli ou vider
 
-	sommePrixProduitPanier.push(prixProduitPanier);
-	// mettre tous les prix dans un tableau
+	totalGlobalPanier.style.display = "none";
+	// on retire la div totalGlobalPanier car le panier est vide, pas besoin de commander ni d'annuler
+} else {
+	let sommePrixProduitPanier = [];
+	for (let i = 0; i < selectionUserLocalStorage.length; i++) {
+		let prixProduitPanier = selectionUserLocalStorage[i].prix;
+		// creation d ela variable qui regroupe les prix
+		// console.log(sommePrixProduitPanier);
+		// verification de l'affichage du prix d'article
+
+		sommePrixProduitPanier.push(prixProduitPanier);
+		// mettre tous les prix dans un tableau
+	}
+
+	const addition = (accumulator, currentValue) => accumulator + currentValue;
+	// addition des prix contenu dans le tableau avec .reduce
+	const prixTotalPanier = sommePrixProduitPanier.reduce(addition, 0);
+	// console.log(prixTotalPanier);
+	// application de la fonction reduce + test ok
+
+	totalPanier.innerHTML = "le total du panier est de : " + prixTotalPanier + " €";
+	// affichage dans le html de la somme des prix d'article panier
+
+	console.log(totalPanier);
 }
-
-const addition = (accumulator, currentValue) => accumulator + currentValue;
-// addition des prix contenu dans le tableau avec .reduce
-const prixTotalPanier = sommePrixProduitPanier.reduce(addition, 0);
-// console.log(prixTotalPanier);
-// application de la fonction reduce + test ok
-
-totalPanier.innerHTML = "le total du panier est de : " + prixTotalPanier + " €";
-// affichage dans le html de la somme des prix d'article panier
-
-console.log(totalPanier);
