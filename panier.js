@@ -158,6 +158,7 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	// affichage dans le html de la somme des prix d'article panier
 
 	console.log(totalPanier);
+	// voir le prix total du panier
 }
 
 // -------------------------------------------creation de la section formulaire--------
@@ -278,27 +279,32 @@ btn_form.appendChild(formBtn);
 
 formBtn.addEventListener("click", (e) => {
 	e.preventDefault();
-	localStorage.setItem("prenom", document.querySelector("#prenom").value);
-	localStorage.setItem("nom", document.querySelector("#nom").value);
-	localStorage.setItem("ville", document.querySelector("#ville").value);
-	localStorage.setItem("codep", document.querySelector("#codeP").value);
-	localStorage.setItem("email", document.querySelector("#email").value);
-	// mettre les valeurs du formulaire dans le locale storage
+
 	const formulaire_valeurs = {
-		prenom: localStorage.getItem("prenom"),
-		nom: localStorage.getItem("nom"),
-		ville: localStorage.getItem("ville"),
-		codep: localStorage.getItem("codep"),
-		email: localStorage.getItem("email"),
+		prenom: document.querySelector("#prenom").value,
+		nom: document.querySelector("#nom").value,
+		ville: document.querySelector("#ville").value,
+		codep: document.querySelector("#codeP").value,
+		email: document.querySelector("#email").value,
 	};
 	// mettre les valeurs du formulaire dans un objet afin de l'utiliser
+
+	localStorage.setItem("dataUser", JSON.stringify(formulaire_valeurs));
+	// mettre les valeurs du formulaire dans le locale storage
+	console.log(formulaire_valeurs);
+	alert("la commande a bien été lancée");
+	// message d'information a l'user
+	localStorage.removeItem("produitUser");
+	// retrait des articles panier du local storage (cela vide le panier)
+
+	window.location.href = "./panier.html";
+	// message d'information a l'user et refresh page pour mettre a jour l'affichage
 
 	const dataPourServer = {
 		selectionUserLocalStorage,
 		formulaire_valeurs,
 	};
+	// mettre les valeurs du formulaire et du panier dans le locale storage
 	console.log(dataPourServer);
-
-	// mettre les données formulaires + les articles selectionnés dans un objet pour le serveur
+	// mettre les données formulaires + les articles panier dans un objet pour le serveur
 });
-// mettre les valeurs du formulaire dans un objet afin de l'utiliser
