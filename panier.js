@@ -2,7 +2,8 @@
 let selectionUserLocalStorage = JSON.parse(localStorage.getItem("produitUser"));
 // json.parse afin de convertir au format JavaScript les fichier format JSON du local storage
 
-console.log(selectionUserLocalStorage);
+// console.log(selectionUserLocalStorage);
+// on verifie que parse fonctionne
 
 const resumePanier = document.querySelector("#shopping-panier");
 
@@ -40,12 +41,12 @@ btnAnnulationPanier.innerHTML = "Annuler";
 // annulation pour vider le panier
 // creation des btn de finalisation
 
-// creation des cibles
+// ---------------------------------------------creation des cibles
 
 resumePanier.appendChild(titrePanier);
 resumePanier.appendChild(listeGlobalePanier);
 totalGlobalPanier.appendChild(totalPanier);
-finaliserPanier.appendChild(btnValidationPanier);
+// finaliserPanier.appendChild(btnValidationPanier);
 finaliserPanier.appendChild(btnAnnulationPanier);
 totalGlobalPanier.appendChild(finaliserPanier);
 resumePanier.appendChild(totalGlobalPanier);
@@ -56,7 +57,7 @@ resumePanier.appendChild(totalGlobalPanier);
 // creation dynamique du panier
 if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	listeGlobalePanier.appendChild(panierVide);
-	console.log("je suis vide");
+	// console.log("je suis vide");
 	// panier non rempli ou vider
 } else {
 	let structurePanier = [];
@@ -126,11 +127,11 @@ btnAnnulationPanier.addEventListener("click", (e) => {
 	// rechargement de la page pour voir les modifications
 });
 
-// -------------calcul de la somme des articles
+// ------------------------------------------calcul de la somme des articles
 
 if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	listeGlobalePanier.appendChild(panierVide);
-	console.log("je suis vide");
+	// console.log("je suis vide");
 	// panier non rempli ou vider
 
 	totalGlobalPanier.style.display = "none";
@@ -158,3 +159,146 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 
 	console.log(totalPanier);
 }
+
+// -------------------------------------------creation de la section formulaire--------
+
+const bloc_formulaire = document.querySelector("#form-commande");
+// selection de la div cible
+// console.log(bloc_formulaire);
+
+const formTitre = document.createElement("h2");
+formTitre.innerHTML = "Merci de remplir les informations suivantes pour la commande";
+const formListe = document.createElement("form");
+// elements principaux
+
+const prenom = document.createElement("div");
+const formListePrenomLabel = document.createElement("label");
+formListePrenomLabel.innerHTML = "Prenom :";
+formListePrenomLabel.setAttribute("for", "prenom");
+const formListePrenom = document.createElement("input");
+formListePrenom.setAttribute("type", "text");
+formListePrenom.setAttribute("name", "prenom");
+formListePrenom.setAttribute("required", "");
+formListePrenom.setAttribute("id", "prenom");
+// prenom
+const nom = document.createElement("div");
+const formListeNomLabel = document.createElement("label");
+formListeNomLabel.innerHTML = "Nom :";
+formListeNomLabel.setAttribute("for", "nom");
+const formListeNom = document.createElement("input");
+formListeNom.setAttribute("type", "text");
+formListeNom.setAttribute("name", "nom");
+formListeNom.setAttribute("required", "");
+formListeNom.setAttribute("id", "nom");
+// nom
+const adresse = document.createElement("div");
+const formListeAdresseLabel = document.createElement("label");
+formListeAdresseLabel.innerHTML = "Adresse :";
+formListeAdresseLabel.setAttribute("for", "adresse");
+const formListeAdresse = document.createElement("input");
+formListeAdresse.setAttribute("type", "text");
+formListeAdresse.setAttribute("name", "adresse");
+formListeAdresse.setAttribute("required", "");
+formListeAdresse.setAttribute("id", "adresse");
+// adresse
+const ville = document.createElement("div");
+const formListeVilleLabel = document.createElement("label");
+formListeVilleLabel.innerHTML = "Ville :";
+formListeVilleLabel.setAttribute("for", "ville");
+const formListeVille = document.createElement("input");
+formListeVille.setAttribute("type", "text");
+formListeVille.setAttribute("name", "ville");
+formListeVille.setAttribute("required", "");
+formListeVille.setAttribute("id", "ville");
+// ville
+const codePostal = document.createElement("div");
+const formListeCodePostalLabel = document.createElement("label");
+formListeCodePostalLabel.innerHTML = "Code postal :";
+formListeCodePostalLabel.setAttribute("for", "codeP");
+const formListeCodePostal = document.createElement("input");
+formListeCodePostal.setAttribute("type", "number");
+formListeCodePostal.setAttribute("name", "codeP");
+formListeCodePostal.setAttribute("required", "");
+formListeCodePostal.setAttribute("id", "codeP");
+// code postal
+const email = document.createElement("div");
+const formListeEmailLabel = document.createElement("label");
+formListeEmailLabel.innerHTML = "Email :";
+formListeEmailLabel.setAttribute("for", "mail");
+const formListeEmail = document.createElement("input");
+formListeEmail.setAttribute("type", "mail");
+formListeEmail.setAttribute("name", "mail");
+formListeEmail.setAttribute("required", "");
+formListeEmail.setAttribute("id", "email");
+// email
+const btn_form = document.createElement("div");
+
+// element du formulaire
+const formBtnLabel = document.createElement("label");
+const formBtn = document.createElement("button");
+formBtn.innerHTML = "Validez l'achat";
+// creation du bouton formulaire
+
+// creation des element html
+
+bloc_formulaire.appendChild(formTitre);
+bloc_formulaire.appendChild(formListe);
+// ajout du titre et formulaire
+
+formListe.appendChild(prenom);
+prenom.appendChild(formListePrenomLabel);
+prenom.appendChild(formListePrenom);
+
+formListe.appendChild(nom);
+nom.appendChild(formListeNomLabel);
+nom.appendChild(formListeNom);
+
+formListe.appendChild(adresse);
+adresse.appendChild(formListeAdresseLabel);
+adresse.appendChild(formListeAdresse);
+
+formListe.appendChild(ville);
+ville.appendChild(formListeVilleLabel);
+ville.appendChild(formListeVille);
+
+formListe.appendChild(codePostal);
+codePostal.appendChild(formListeCodePostalLabel);
+codePostal.appendChild(formListeCodePostal);
+
+formListe.appendChild(email);
+email.appendChild(formListeEmailLabel);
+email.appendChild(formListeEmail);
+
+formListe.appendChild(btn_form);
+btn_form.appendChild(formBtnLabel);
+btn_form.appendChild(formBtn);
+// ajout des elements html
+
+// ------------recuperation des information du formulaire vers le local storage
+
+formBtn.addEventListener("click", (e) => {
+	e.preventDefault();
+	localStorage.setItem("prenom", document.querySelector("#prenom").value);
+	localStorage.setItem("nom", document.querySelector("#nom").value);
+	localStorage.setItem("ville", document.querySelector("#ville").value);
+	localStorage.setItem("codep", document.querySelector("#codeP").value);
+	localStorage.setItem("email", document.querySelector("#email").value);
+	// mettre les valeurs du formulaire dans le locale storage
+	const formulaire_valeurs = {
+		prenom: localStorage.getItem("prenom"),
+		nom: localStorage.getItem("nom"),
+		ville: localStorage.getItem("ville"),
+		codep: localStorage.getItem("codep"),
+		email: localStorage.getItem("email"),
+	};
+	// mettre les valeurs du formulaire dans un objet afin de l'utiliser
+
+	const dataPourServer = {
+		selectionUserLocalStorage,
+		formulaire_valeurs,
+	};
+	console.log(dataPourServer);
+
+	// mettre les données formulaires + les articles selectionnés dans un objet pour le serveur
+});
+// mettre les valeurs du formulaire dans un objet afin de l'utiliser

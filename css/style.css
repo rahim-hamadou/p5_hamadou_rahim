@@ -39,7 +39,7 @@ a:active {
 	color: white;
 }
 
-/* header */
+/* ---------------------------------------------header --------------------------------------------*/
 
 header {
 	width: 100%;
@@ -84,7 +84,7 @@ header {
 	align-items: center;
 }
 
-/* main */
+/* ------------------------------------------main --------------------------------------*/
 
 .banner {
 	position: relative;
@@ -171,7 +171,7 @@ button {
 	margin: 10px auto;
 }
 
-/* footer */
+/* ---------------------------------------------footer ---------------------------------------------*/
 
 footer {
 	background: rgb(128, 72, 35);
@@ -205,7 +205,7 @@ footer span {
 .icon:hover {
 	color: rgba(255, 255, 255, 0.336);
 }
-/* Panier */
+/*------------------------------- Panier-recap --------------------------------------*/
 .panier-global {
 	margin: auto;
 	background: beige;
@@ -263,7 +263,41 @@ footer span {
 	margin: 15px 10px;
 }
 
-/* responsive */
+/* ----------------------------------------panier-formulaire----------------------------- */
+
+.formulaire {
+	text-align: center;
+	margin: 20px auto;
+}
+
+.formulaire form {
+	margin: 15px auto;
+}
+.formulaire h2 {
+	margin: 0 auto;
+}
+.formulaire form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	/* text-align: center; */
+	align-items: center;
+}
+
+.formulaire form div {
+	margin: 10px auto;
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+}
+.formulaire label {
+	color: #fff;
+}
+.formulaire input {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* ---------------------------------------------responsive--------------------------------------------- */
 @media screen and (max-width: 870px) {
 	/* main */
 

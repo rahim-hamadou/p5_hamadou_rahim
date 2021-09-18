@@ -10,7 +10,7 @@ const queryString_url_id = window.location.search;
 
 // //  -------------------------test 1:
 // const idPage_produit = queryString_url_id.slice(4);
-// // recuperation de l'id dans l'url du produit dans le complement url, en coupant la valeur recuperé d uwindow.location.search
+// // recuperation de l'id dans l'url du produit dans le complement url, en coupant la valeur recuperé du window.location.search
 // console.log(queryString_url_id);
 // console.log(idPage_produit);
 
@@ -26,9 +26,9 @@ const id = urlSearchParams.get("id");
 // console.log(id);
 //on verifie l'id par parge produit
 
-// ------------------------affichage en fonction de l'id-----------
+// ------------------------affichage en fonction de l'id--------------------------
 
-//----------faire un fetch avec un slash suivi de l'id en fin d'url-------
+//---------------------------------------faire un fetch avec un slash suivi de l'id en fin d'url-------
 
 let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 	.then((reponse) => reponse.json())
@@ -104,7 +104,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			//on ajoute les options au select qui est ajouter au form qui est ajouter au li a son tour
 		}
 
-		// choix couleurs
+		// -----------------------------------------------choix couleurs--------------------------------------
 
 		liProduit.appendChild(btnValideProduit);
 		// On l'ajoute au corps du document
@@ -114,7 +114,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		listeProduits.appendChild(liProduit);
 		// //enfin on ajoutes ces li au ul principale
 
-		// ------------------panier-------------------
+		// ----------------------------------------------------panier-------------------
 		const classChoixCouleur = document.querySelector(".select-couleur");
 
 		const btnPanier = document.querySelector(".btn-validation");
@@ -124,7 +124,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		btnValideProduit.addEventListener("click", (e) => {
 			e.preventDefault();
 
-			// -----------choix de couleur l'user-------
+			// -----------------------------------choix de couleur l'user-------
 			const choixUserCouleur = classChoixCouleur.value;
 			// recuperation du choix de couleur
 
@@ -143,7 +143,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			};
 			console.log(selectionUser);
 
-			// le local storage
+			// ---------------------------------------le local storage-----------------------------------
 
 			// declaration de variable a stocker dans le local storage
 			let selectionUserLocalStorage = JSON.parse(localStorage.getItem("produitUser"));
