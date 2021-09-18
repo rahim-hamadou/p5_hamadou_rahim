@@ -82,7 +82,8 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 		listeProduitPanier.appendChild(btnProduitPanier);
 		listeGlobalePanier.appendChild(listeProduitPanier);
 
-		console.log(selectionUserLocalStorage.length);
+		// console.log(selectionUserLocalStorage.length);
+		// voir la taille du tableau
 	}
 	console.log("je ne suis pas vide");
 	//si le panier n'est pas vide
@@ -157,7 +158,7 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	totalPanier.innerHTML = "le total du panier est de : " + prixTotalPanier + " €";
 	// affichage dans le html de la somme des prix d'article panier
 
-	console.log(totalPanier);
+	// console.log(totalPanier);
 	// voir le prix total du panier
 }
 
@@ -283,28 +284,109 @@ formBtn.addEventListener("click", (e) => {
 	const formulaire_valeurs = {
 		prenom: document.querySelector("#prenom").value,
 		nom: document.querySelector("#nom").value,
+		adresse: document.querySelector("#adresse").value,
 		ville: document.querySelector("#ville").value,
 		codep: document.querySelector("#codeP").value,
 		email: document.querySelector("#email").value,
 	};
 	// mettre les valeurs du formulaire dans un objet afin de l'utiliser
 
-	localStorage.setItem("dataUser", JSON.stringify(formulaire_valeurs));
-	// mettre les valeurs du formulaire dans le locale storage
-	console.log(formulaire_valeurs);
-	alert("la commande a bien été lancée");
-	// message d'information a l'user
-	localStorage.removeItem("produitUser");
-	// retrait des articles panier du local storage (cela vide le panier)
+	// ------------------------controle du formulaire
+	const textAlert = (valeur) => {
+		return valeur + " : Une erreur est survenue, veuillez verifier le formulaire avant la validation";
+	};
+	// expression de fonction pour le message d'alerte pour le prenom , nom et ville
+	const regExPrenomNomVille = (valeurs) => {
+		return /^[A-Za-z]{3,20}$/.test(valeurs);
+	};
+	// expression de fonction regex pour le prenom , nom et ville
+	function controlPrenom() {
+		const lePrenom = formulaire_valeurs.prenom;
+		if (regExPrenomNomVille(lePrenom)) {
+			console.log("ok");
+			return true;
+		} else {
+			console.log("ko");
+			alert(textAlert("Prenom"));
+			return false;
+		}
+	}
+	function controlNom() {
+		const leNom = formulaire_valeurs.nom;
+		if (regExPrenomNomVille(leNom)) {
+			console.log("ok");
+			return true;
+		} else {
+			console.log("ko");
+			alert(textAlert("Nom"));
+			return false;
+		}
+	}
+	function controlVille() {
+		const laVille = formulaire_valeurs.ville;
+		if (regExPrenomNomVille(laVille)) {
+			console.log("ok");
+			return true;
+		} else {
+			console.log("ko");
+			alert(textAlert("Ville"));
+			return false;
+		}
+	}
+	// les fonctions de controle
 
-	window.location.href = "./panier.html";
-	// message d'information a l'user et refresh page pour mettre a jour l'affichage
+	if (controlPrenom() && controlNom() && controlVille()) {
+		localStorage.setItem("dataUser", JSON.stringify(formulaire_valeurs));
+		// mettre les valeurs du formulaire dans le locale storage
+		alert("la commande a bien été lancée");
+		// message d'information a l'user
+		console.log(controlPrenom());
+	} else {
+		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres");
+	}
+
+	// localStorage.removeItem("produitUser");
+	// // retrait des articles panier du local storage (cela vide le panier)
+
+	// window.location.href = "./panier.html";
+	// // message d'information a l'user et refresh page pour mettre a jour l'affichage
 
 	const dataPourServer = {
 		selectionUserLocalStorage,
 		formulaire_valeurs,
 	};
 	// mettre les valeurs du formulaire et du panier dans le locale storage
+
+	// ------------------------controle du formulaire
+
 	console.log(dataPourServer);
 	// mettre les données formulaires + les articles panier dans un objet pour le serveur
+	console.log(formulaire_valeurs);
+	console.log(dataPourServer);
 });
+
+// ---------conserver les données du local storage dans le formulaire ------------
+const dataUserDuLocalStorage = localStorage.getItem("dataUser");
+// console.log(dataUserDuLocalStorage);
+// recuperer la key du locale storage dans une variable
+
+const dataUserObjet = JSON.parse(dataUserDuLocalStorage);
+// console.log(dataUserObjet);
+// convertir une chaine de caractere en Objet JS
+
+function remplirLeFormulaire() {
+	document.querySelector("#prenom").setAttribute("value", dataUserObjet.prenom);
+	formListeNom.value = dataUserObjet.nom;
+	formListeAdresse.value = dataUserObjet.adresse;
+	formListeVille.value = dataUserObjet.ville;
+	formListeCodePostal.value = dataUserObjet.codep;
+	formListeEmail.value = dataUserObjet.email;
+	// deux methodes possibles
+}
+// creation d'une fonction qui remplit le formulaire
+
+if (dataUserObjet !== null) {
+	remplirLeFormulaire();
+} else {
+}
+// mettre les valeurs de l'objet dataUserobjet dans le formulaire
