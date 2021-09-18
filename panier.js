@@ -296,8 +296,13 @@ formBtn.addEventListener("click", (e) => {
 		return valeur + " : Une erreur est survenue, veuillez verifier le formulaire avant la validation";
 	};
 	// expression de fonction pour le message d'alerte pour le prenom , nom et ville
-	const regExPrenomNomVille = (valeurs) => {
-		return /^[A-Za-z]{3,20}$/.test(valeurs);
+
+	const regExCodePostal = (valeur) => {
+		return /^[0-9]{5}$/.test(valeur);
+	};
+	//  expression de fonction regex pour le code postal
+	const regExPrenomNomVille = (valeur) => {
+		return /^[A-Za-z]{3,20}$/.test(valeur);
 	};
 	// expression de fonction regex pour le prenom , nom et ville
 	function controlPrenom() {
@@ -333,9 +338,21 @@ formBtn.addEventListener("click", (e) => {
 			return false;
 		}
 	}
+	function controlCodePostal() {
+		const leCodePostal = formulaire_valeurs.codep;
+		if (regExCodePostal(leCodePostal)) {
+			console.log("ok");
+			return true;
+		} else {
+			console.log("ko");
+			alert("Code Postal : il doit etre composé de 5 chiffres ");
+			return false;
+		}
+	}
+
 	// les fonctions de controle
 
-	if (controlPrenom() && controlNom() && controlVille()) {
+	if (controlPrenom() && controlNom() && controlVille() && controlCodePostal()) {
 		localStorage.setItem("dataUser", JSON.stringify(formulaire_valeurs));
 		// mettre les valeurs du formulaire dans le locale storage
 		alert("la commande a bien été lancée");
@@ -349,7 +366,7 @@ formBtn.addEventListener("click", (e) => {
 	// // retrait des articles panier du local storage (cela vide le panier)
 
 	// window.location.href = "./panier.html";
-	// // message d'information a l'user et refresh page pour mettre a jour l'affichage
+	// // message d'information a l' user et refresh page pour mettre a jour l'affichage
 
 	const dataPourServer = {
 		selectionUserLocalStorage,
