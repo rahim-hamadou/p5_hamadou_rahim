@@ -47,14 +47,42 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		let titreBodyProduit = document.createElement("p");
 		let priceProduit = document.createElement("p");
 		let formProduit = document.createElement("form");
+		formProduit.classList.add("formulaire-couleur");
 		//creation d'un formulaire
-
+		let labelChoixTitre = document.createElement("label");
+		labelChoixTitre.setAttribute = ("for", "couleur");
+		labelChoixTitre.innerHTML = "Couleur :";
 		let labelChoix = document.createElement("select");
 		labelChoix.setAttribute = ("size", "1");
 		labelChoix.classList.add("select-couleur");
 		let choixCouleur = document.createElement("option");
 		//on cree les element html
 
+		// -------------------------------------creation du form pour quantité
+		let quantitéProduit = document.createElement("form");
+		quantitéProduit.classList.add = "formulaire-quantite";
+		let quantitéProduitTitre = document.createElement("label");
+		quantitéProduitTitre.setAttribute = ("for", "quantité");
+		quantitéProduitTitre.innerHTML = "Choisir la quantité :";
+		let quantitéProduitChoix = document.createElement("select");
+		quantitéProduitChoix.setAttribute = ("id", "quantite-form");
+		quantitéProduitChoix.id = "quantite-produit";
+		let quantitéProduitChoixNombre1 = document.createElement("option");
+		quantitéProduitChoixNombre1.value = "1";
+		quantitéProduitChoixNombre1.text = "1";
+		let quantitéProduitChoixNombre2 = document.createElement("option");
+		quantitéProduitChoixNombre2.value = "2";
+		quantitéProduitChoixNombre2.text = "2";
+		let quantitéProduitChoixNombre3 = document.createElement("option");
+		quantitéProduitChoixNombre3.value = "3";
+		quantitéProduitChoixNombre3.text = "3";
+		let quantitéProduitChoixNombre4 = document.createElement("option");
+		quantitéProduitChoixNombre4.value = "4";
+		quantitéProduitChoixNombre4.text = "4";
+		let quantitéProduitChoixNombre5 = document.createElement("option");
+		quantitéProduitChoixNombre5.value = "5";
+		quantitéProduitChoixNombre5.text = "5";
+		// --------------------------------------selection de quantité
 		choixCouleur = dataProduit.colors;
 
 		for (let i = 0; i < dataProduit.colors.length; i++) {
@@ -91,6 +119,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		liProduit.appendChild(titreCarteProduit);
 		liProduit.appendChild(titreBodyProduit);
 		liProduit.appendChild(priceProduit);
+
 		// affichage information
 		for (let i = 0; i < dataProduit.colors.length; i++) {
 			let choixCouleur = document.createElement("option");
@@ -99,13 +128,30 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			// liProduit.appendChild(choixCouleur);
 
 			labelChoix.appendChild(choixCouleur);
+			formProduit.appendChild(labelChoixTitre);
 			formProduit.appendChild(labelChoix);
 			liProduit.appendChild(formProduit);
 			//on ajoute les options au select qui est ajouter au form qui est ajouter au li a son tour
 		}
 
-		// -----------------------------------------------choix couleurs--------------------------------------
+		// -----------------------------------------------choix couleurs----------------------------
 
+		quantitéProduit.appendChild(quantitéProduitTitre);
+		quantitéProduit.appendChild(quantitéProduitChoix);
+		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre1);
+		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre2);
+		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre3);
+		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre4);
+		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre5);
+		liProduit.appendChild(quantitéProduit);
+		// ajout du formulaire quantité a la structure html
+
+		// for (let i = 1; i <= 5; i++) {
+		// 	let quantitéProduitChoixNombre = document.createElement("option");
+		// 	quantitéProduitChoix.setAttribute("value", "quantitéProduitChoixNombre");
+		// }
+
+		// -----------------------------------------------choix quantité----------------------------
 		liProduit.appendChild(btnValideProduit);
 		// On l'ajoute au corps du document
 

@@ -168,6 +168,19 @@ p,
 button {
 	margin: 10px auto;
 }
+.formulaire-couleur {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.formulaire-couleur label,
+select {
+	margin: 0 5px;
+}
+.formulaire-quantite {
+	margin: 0 5px;
+}
 
 /* footer */
 
