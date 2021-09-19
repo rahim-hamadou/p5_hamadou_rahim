@@ -182,7 +182,7 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	bloc_formulaire.style.display = "none";
 	// on retire la div bloc_formulaire car le panier est vide, pas besoin de commander ni d'annuler
 }
-// caché le formulaire si le panier est vide
+// caché le formulaire  si le panier est vide
 
 const formTitre = document.createElement("h2");
 formTitre.innerHTML = "Merci de remplir les informations suivantes pour la commande";
@@ -359,6 +359,8 @@ formBtn.addEventListener("click", (e) => {
 	function controlPrenom() {
 		const lePrenom = formulaire_valeurs.prenom;
 		if (regExPrenomNomVille(lePrenom)) {
+			formListePrenom.classList.remove("formulaire-input-erreur");
+			formSpanPrenom.style.display = "none";
 			console.log("ok");
 			return true;
 		} else {
@@ -372,6 +374,8 @@ formBtn.addEventListener("click", (e) => {
 	function controlNom() {
 		const leNom = formulaire_valeurs.nom;
 		if (regExPrenomNomVille(leNom)) {
+			formListeNom.classList.remove("formulaire-input-erreur");
+			formSpanNom.style.display = "none";
 			console.log("ok");
 			return true;
 		} else {
@@ -385,6 +389,8 @@ formBtn.addEventListener("click", (e) => {
 	function controlVille() {
 		const laVille = formulaire_valeurs.ville;
 		if (regExPrenomNomVille(laVille)) {
+			formListeVille.classList.remove("formulaire-input-erreur");
+			formSpanVille.style.display = "none";
 			console.log("ok");
 			return true;
 		} else {
@@ -398,6 +404,8 @@ formBtn.addEventListener("click", (e) => {
 	function controlCodePostal() {
 		const leCodePostal = formulaire_valeurs.codep;
 		if (regExCodePostal(leCodePostal)) {
+			formListeCodePostal.classList.remove("formulaire-input-erreur");
+			formSpanCodePostal.style.display = "none";
 			console.log("ok");
 			return true;
 		} else {
@@ -411,6 +419,8 @@ formBtn.addEventListener("click", (e) => {
 	function controlEmail() {
 		const leEmail = formulaire_valeurs.email;
 		if (regExEmail(leEmail)) {
+			formListeEmail.classList.remove("formulaire-input-erreur");
+			formSpanEmail.style.display = "none";
 			console.log("ok");
 			return true;
 		} else {
@@ -424,6 +434,8 @@ formBtn.addEventListener("click", (e) => {
 	function controlAdresse() {
 		const laAdresse = formulaire_valeurs.adresse;
 		if (regExAdresse(laAdresse)) {
+			formListeAdresse.classList.remove("formulaire-input-erreur");
+			formSpanAdresse.style.display = "none";
 			console.log("ok");
 			return true;
 		} else {
@@ -450,12 +462,6 @@ formBtn.addEventListener("click", (e) => {
 		alert("la commande a bien été lancée");
 		// message d'information a l'user
 		console.log(controlPrenom());
-		// formListePrenom.classList.remove("formulaire-input-erreur");
-		// formListeNom.classList.remove("formulaire-input-erreur");
-		// formListeAdresse.classList.remove("formulaire-input-erreur");
-		// formListeVille.classList.remove("formulaire-input-erreur");
-		// formListeCodePostal.classList.remove("formulaire-input-erreur");
-		// formListeEmail.classList.remove("formulaire-input-erreur");
 	} else {
 		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres ");
 	}
