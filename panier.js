@@ -68,6 +68,11 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 			selectionUserLocalStorage[i].nomProduit +
 			" de couleur : " +
 			selectionUserLocalStorage[i].optionCouleur +
+			"" +
+			" (" +
+			"x" +
+			selectionUserLocalStorage[i].quantite +
+			") " +
 			" au prix de : " +
 			selectionUserLocalStorage[i].prix +
 			" €";
@@ -167,6 +172,17 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 const bloc_formulaire = document.querySelector("#form-commande");
 // selection de la div cible
 // console.log(bloc_formulaire);
+
+// caché le form si le panier est vide
+if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
+	listeGlobalePanier.appendChild(panierVide);
+	// console.log("je suis vide");
+	// panier non rempli ou vider
+
+	bloc_formulaire.style.display = "none";
+	// on retire la div bloc_formulaire car le panier est vide, pas besoin de commander ni d'annuler
+}
+// caché le formulaire si le panier est vide
 
 const formTitre = document.createElement("h2");
 formTitre.innerHTML = "Merci de remplir les informations suivantes pour la commande";
@@ -331,7 +347,7 @@ formBtn.addEventListener("click", (e) => {
 	};
 	//  expression de fonction regex pour le code postal
 	const regExPrenomNomVille = (valeur) => {
-		return /^[A-Za-z]{3,20}$/.test(valeur);
+		return /^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$/.test(valeur);
 	};
 	// expression de fonction regex pour le prenom , nom et ville
 	const regExAdresse = (valeur) => {
@@ -434,6 +450,12 @@ formBtn.addEventListener("click", (e) => {
 		alert("la commande a bien été lancée");
 		// message d'information a l'user
 		console.log(controlPrenom());
+		// formListePrenom.classList.remove("formulaire-input-erreur");
+		// formListeNom.classList.remove("formulaire-input-erreur");
+		// formListeAdresse.classList.remove("formulaire-input-erreur");
+		// formListeVille.classList.remove("formulaire-input-erreur");
+		// formListeCodePostal.classList.remove("formulaire-input-erreur");
+		// formListeEmail.classList.remove("formulaire-input-erreur");
 	} else {
 		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres ");
 	}

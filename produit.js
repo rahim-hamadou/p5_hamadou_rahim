@@ -59,29 +59,35 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 		//on cree les element html
 
 		// -------------------------------------creation du form pour quantité
-		let quantitéProduit = document.createElement("form");
-		quantitéProduit.classList.add = "formulaire-quantite";
-		let quantitéProduitTitre = document.createElement("label");
-		quantitéProduitTitre.setAttribute = ("for", "quantité");
-		quantitéProduitTitre.innerHTML = "Choisir la quantité :";
-		let quantitéProduitChoix = document.createElement("select");
-		quantitéProduitChoix.setAttribute = ("id", "quantite-form");
-		quantitéProduitChoix.id = "quantite-produit";
-		let quantitéProduitChoixNombre1 = document.createElement("option");
-		quantitéProduitChoixNombre1.value = "1";
-		quantitéProduitChoixNombre1.text = "1";
-		let quantitéProduitChoixNombre2 = document.createElement("option");
-		quantitéProduitChoixNombre2.value = "2";
-		quantitéProduitChoixNombre2.text = "2";
-		let quantitéProduitChoixNombre3 = document.createElement("option");
-		quantitéProduitChoixNombre3.value = "3";
-		quantitéProduitChoixNombre3.text = "3";
-		let quantitéProduitChoixNombre4 = document.createElement("option");
-		quantitéProduitChoixNombre4.value = "4";
-		quantitéProduitChoixNombre4.text = "4";
-		let quantitéProduitChoixNombre5 = document.createElement("option");
-		quantitéProduitChoixNombre5.value = "5";
-		quantitéProduitChoixNombre5.text = "5";
+		let quantiteProduit = document.createElement("form");
+		quantiteProduit.classList.add = "formulaire-quantite";
+		let quantiteProduitTitre = document.createElement("label");
+		quantiteProduitTitre.setAttribute = ("for", "quantité");
+		quantiteProduitTitre.innerHTML = "Choisir la quantité :";
+		let quantiteProduitChoix = document.createElement("select");
+		quantiteProduitChoix.setAttribute = ("id", "quantite-form");
+		quantiteProduitChoix.id = "quantite-produit";
+		let quantiteProduitChoixNombre = document.createElement("option");
+		let quantiteProduitChoixNombre1 = document.createElement("option");
+		quantiteProduitChoixNombre1.value = "1";
+		quantiteProduitChoixNombre1.text = "1";
+		quantiteProduitChoixNombre1.id = "quantite1";
+		let quantiteProduitChoixNombre2 = document.createElement("option");
+		quantiteProduitChoixNombre2.value = "2";
+		quantiteProduitChoixNombre2.text = "2";
+		quantiteProduitChoixNombre2.id = "quantite2";
+		let quantiteProduitChoixNombre3 = document.createElement("option");
+		quantiteProduitChoixNombre3.value = "3";
+		quantiteProduitChoixNombre3.text = "3";
+		quantiteProduitChoixNombre3.id = "quantite3";
+		let quantiteProduitChoixNombre4 = document.createElement("option");
+		quantiteProduitChoixNombre4.value = "4";
+		quantiteProduitChoixNombre4.text = "4";
+		quantiteProduitChoixNombre4.id = "quantite4";
+		let quantiteProduitChoixNombre5 = document.createElement("option");
+		quantiteProduitChoixNombre5.value = "5";
+		quantiteProduitChoixNombre5.text = "5";
+		quantiteProduitChoixNombre5.id = "quantite5";
 		// --------------------------------------selection de quantité
 		choixCouleur = dataProduit.colors;
 
@@ -89,7 +95,6 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			let choixCouleur = document.createElement("option");
 			choixCouleur.setAttribute("value", dataProduit.colors[i]);
 			choixCouleur.text = dataProduit.colors[i];
-			// liProduit.appendChild(choixCouleur);
 		}
 
 		let imgProduit = document.createElement("img");
@@ -136,20 +141,26 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 
 		// -----------------------------------------------choix couleurs----------------------------
 
-		quantitéProduit.appendChild(quantitéProduitTitre);
-		quantitéProduit.appendChild(quantitéProduitChoix);
-		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre1);
-		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre2);
-		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre3);
-		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre4);
-		quantitéProduitChoix.appendChild(quantitéProduitChoixNombre5);
-		liProduit.appendChild(quantitéProduit);
-		// ajout du formulaire quantité a la structure html
-
 		// for (let i = 1; i <= 5; i++) {
-		// 	let quantitéProduitChoixNombre = document.createElement("option");
-		// 	quantitéProduitChoix.setAttribute("value", "quantitéProduitChoixNombre");
+		// 	let quantiteProduitChoixNombre = document.createElement("option");
+		// 	quantiteProduitChoixNombre.setAttribute("value", [i]);
+		// 	quantiteProduitChoixNombre.text = [i];
+		// 	console.log(quantiteProduitChoixNombre);
 		// }
+		// test 1
+
+		// test de creation d'option en utilisant les boucles
+
+		quantiteProduit.appendChild(quantiteProduitTitre);
+		quantiteProduit.appendChild(quantiteProduitChoix);
+		// quantiteProduitChoix.appendChild(quantiteProduitChoixNombre);
+		quantiteProduitChoix.appendChild(quantiteProduitChoixNombre1);
+		quantiteProduitChoix.appendChild(quantiteProduitChoixNombre2);
+		quantiteProduitChoix.appendChild(quantiteProduitChoixNombre3);
+		quantiteProduitChoix.appendChild(quantiteProduitChoixNombre4);
+		quantiteProduitChoix.appendChild(quantiteProduitChoixNombre5);
+		liProduit.appendChild(quantiteProduit);
+		// ajout du formulaire quantité a la structure html
 
 		// -----------------------------------------------choix quantité----------------------------
 		liProduit.appendChild(btnValideProduit);
@@ -177,6 +188,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			const nameUserProduit = dataProduit.name;
 			const idUserProduit = id;
 			const couleurUserProduit = choixUserCouleur;
+			const quantiteUserProduit = quantiteProduitChoix.value;
 			const prixUserProduit = dataProduit.price / 100;
 			// creation des const servant a creer l'objet selectionUser
 
@@ -184,8 +196,8 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 				nomProduit: nameUserProduit,
 				idProduit: idUserProduit,
 				optionCouleur: couleurUserProduit,
-				quantité: "1",
-				prix: prixUserProduit,
+				quantite: quantiteUserProduit,
+				prix: prixUserProduit * quantiteUserProduit,
 			};
 			console.log(selectionUser);
 
@@ -213,6 +225,11 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 							nameUserProduit +
 							" de couleur " +
 							couleurUserProduit +
+							"" +
+							" (" +
+							"x" +
+							quantiteUserProduit +
+							") " +
 							" à bien été ajouté au panier consulter le panier avec OK ou retourner à l'accueil avec ANNULER",
 					)
 				) {
