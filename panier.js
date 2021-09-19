@@ -276,7 +276,7 @@ btn_form.appendChild(formBtnLabel);
 btn_form.appendChild(formBtn);
 // ajout des elements html
 
-// ------------recuperation des information du formulaire vers le local storage
+// ----------------------recuperation des information du formulaire vers le local storage
 
 formBtn.addEventListener("click", (e) => {
 	e.preventDefault();
@@ -291,12 +291,16 @@ formBtn.addEventListener("click", (e) => {
 	};
 	// mettre les valeurs du formulaire dans un objet afin de l'utiliser
 
-	// ------------------------controle du formulaire
+	// ------------------------------------controle du formulaire
+
 	const textAlert = (valeur) => {
 		return valeur + " : Une erreur est survenue, veuillez verifier le formulaire avant la validation";
 	};
 	// expression de fonction pour le message d'alerte pour le prenom , nom et ville
-
+	const regExEmail = (valeur) => {
+		return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(valeur);
+	};
+	//  expression de fonction regex pour l'email
 	const regExCodePostal = (valeur) => {
 		return /^[0-9]{5}$/.test(valeur);
 	};
@@ -305,6 +309,8 @@ formBtn.addEventListener("click", (e) => {
 		return /^[A-Za-z]{3,20}$/.test(valeur);
 	};
 	// expression de fonction regex pour le prenom , nom et ville
+
+	// --------------------------------------creation des regex
 	function controlPrenom() {
 		const lePrenom = formulaire_valeurs.prenom;
 		if (regExPrenomNomVille(lePrenom)) {
@@ -349,17 +355,28 @@ formBtn.addEventListener("click", (e) => {
 			return false;
 		}
 	}
+	function controlEmail() {
+		const leEmail = formulaire_valeurs.email;
+		if (regExEmail(leEmail)) {
+			console.log("ok");
+			return true;
+		} else {
+			console.log("ko");
+			alert("Email : l'adresse Email n'est pas au bon format ");
+			return false;
+		}
+	}
 
-	// les fonctions de controle
+	// --------------------------------------les fonctions de controle
 
-	if (controlPrenom() && controlNom() && controlVille() && controlCodePostal()) {
+	if (controlPrenom() && controlNom() && controlVille() && controlCodePostal() && controlEmail()) {
 		localStorage.setItem("dataUser", JSON.stringify(formulaire_valeurs));
 		// mettre les valeurs du formulaire dans le locale storage
 		alert("la commande a bien été lancée");
 		// message d'information a l'user
 		console.log(controlPrenom());
 	} else {
-		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres");
+		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres ");
 	}
 
 	// localStorage.removeItem("produitUser");
