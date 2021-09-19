@@ -177,6 +177,8 @@ const prenom = document.createElement("div");
 const formListePrenomLabel = document.createElement("label");
 formListePrenomLabel.innerHTML = "Prenom :";
 formListePrenomLabel.setAttribute("for", "prenom");
+const formSpanPrenom = document.createElement("span");
+formSpanPrenom.classList.add("form-erreur");
 const formListePrenom = document.createElement("input");
 formListePrenom.setAttribute("type", "text");
 formListePrenom.setAttribute("name", "prenom");
@@ -187,6 +189,8 @@ const nom = document.createElement("div");
 const formListeNomLabel = document.createElement("label");
 formListeNomLabel.innerHTML = "Nom :";
 formListeNomLabel.setAttribute("for", "nom");
+const formSpanNom = document.createElement("span");
+formSpanNom.classList.add("form-erreur");
 const formListeNom = document.createElement("input");
 formListeNom.setAttribute("type", "text");
 formListeNom.setAttribute("name", "nom");
@@ -197,6 +201,8 @@ const adresse = document.createElement("div");
 const formListeAdresseLabel = document.createElement("label");
 formListeAdresseLabel.innerHTML = "Adresse :";
 formListeAdresseLabel.setAttribute("for", "adresse");
+const formSpanAdresse = document.createElement("span");
+formSpanAdresse.classList.add("form-erreur");
 const formListeAdresse = document.createElement("input");
 formListeAdresse.setAttribute("type", "text");
 formListeAdresse.setAttribute("name", "adresse");
@@ -207,6 +213,8 @@ const ville = document.createElement("div");
 const formListeVilleLabel = document.createElement("label");
 formListeVilleLabel.innerHTML = "Ville :";
 formListeVilleLabel.setAttribute("for", "ville");
+const formSpanVille = document.createElement("span");
+formSpanVille.classList.add("form-erreur");
 const formListeVille = document.createElement("input");
 formListeVille.setAttribute("type", "text");
 formListeVille.setAttribute("name", "ville");
@@ -217,6 +225,8 @@ const codePostal = document.createElement("div");
 const formListeCodePostalLabel = document.createElement("label");
 formListeCodePostalLabel.innerHTML = "Code postal :";
 formListeCodePostalLabel.setAttribute("for", "codeP");
+const formSpanCodePostal = document.createElement("span");
+formSpanCodePostal.classList.add("form-erreur");
 const formListeCodePostal = document.createElement("input");
 formListeCodePostal.setAttribute("type", "number");
 formListeCodePostal.setAttribute("name", "codeP");
@@ -227,6 +237,8 @@ const email = document.createElement("div");
 const formListeEmailLabel = document.createElement("label");
 formListeEmailLabel.innerHTML = "Email :";
 formListeEmailLabel.setAttribute("for", "mail");
+const formSpanEmail = document.createElement("span");
+formSpanEmail.classList.add("form-erreur");
 const formListeEmail = document.createElement("input");
 formListeEmail.setAttribute("type", "mail");
 formListeEmail.setAttribute("name", "mail");
@@ -249,26 +261,32 @@ bloc_formulaire.appendChild(formListe);
 
 formListe.appendChild(prenom);
 prenom.appendChild(formListePrenomLabel);
+prenom.appendChild(formSpanPrenom);
 prenom.appendChild(formListePrenom);
 
 formListe.appendChild(nom);
 nom.appendChild(formListeNomLabel);
+nom.appendChild(formSpanNom);
 nom.appendChild(formListeNom);
 
 formListe.appendChild(adresse);
 adresse.appendChild(formListeAdresseLabel);
+adresse.appendChild(formSpanAdresse);
 adresse.appendChild(formListeAdresse);
 
 formListe.appendChild(ville);
 ville.appendChild(formListeVilleLabel);
+ville.appendChild(formSpanVille);
 ville.appendChild(formListeVille);
 
 formListe.appendChild(codePostal);
 codePostal.appendChild(formListeCodePostalLabel);
+codePostal.appendChild(formSpanCodePostal);
 codePostal.appendChild(formListeCodePostal);
 
 formListe.appendChild(email);
 email.appendChild(formListeEmailLabel);
+email.appendChild(formSpanEmail);
 email.appendChild(formListeEmail);
 
 formListe.appendChild(btn_form);
@@ -293,6 +311,13 @@ formBtn.addEventListener("click", (e) => {
 
 	// ------------------------------------controle du formulaire
 
+	function erreurChampsText(valeur) {
+		valeur.textContent = "Veuillez bien remplir ce champ ";
+	}
+	// fonction du message d'erreur a ffaicher au dessus de l'input
+
+	// creation de fonction utile au formulaire
+
 	const textAlert = (valeur) => {
 		return valeur + " : Une erreur est survenue, veuillez verifier le formulaire avant la validation";
 	};
@@ -309,6 +334,10 @@ formBtn.addEventListener("click", (e) => {
 		return /^[A-Za-z]{3,20}$/.test(valeur);
 	};
 	// expression de fonction regex pour le prenom , nom et ville
+	const regExAdresse = (valeur) => {
+		return /^[A-Za-z0-9\s]{5,50}$/.test(valeur);
+	};
+	// expression de fonction regex pour l'adresse
 
 	// --------------------------------------creation des regex
 	function controlPrenom() {
@@ -318,6 +347,8 @@ formBtn.addEventListener("click", (e) => {
 			return true;
 		} else {
 			console.log("ko");
+			erreurChampsText(formSpanPrenom);
+			formListePrenom.classList.add("formulaire-input-erreur");
 			alert(textAlert("Prenom"));
 			return false;
 		}
@@ -329,6 +360,8 @@ formBtn.addEventListener("click", (e) => {
 			return true;
 		} else {
 			console.log("ko");
+			erreurChampsText(formSpanNom);
+			formListeNom.classList.add("formulaire-input-erreur");
 			alert(textAlert("Nom"));
 			return false;
 		}
@@ -340,6 +373,8 @@ formBtn.addEventListener("click", (e) => {
 			return true;
 		} else {
 			console.log("ko");
+			erreurChampsText(formSpanVille);
+			formListeVille.classList.add("formulaire-input-erreur");
 			alert(textAlert("Ville"));
 			return false;
 		}
@@ -351,6 +386,8 @@ formBtn.addEventListener("click", (e) => {
 			return true;
 		} else {
 			console.log("ko");
+			erreurChampsText(formSpanCodePostal);
+			formListeCodePostal.classList.add("formulaire-input-erreur");
 			alert("Code Postal : il doit etre composé de 5 chiffres ");
 			return false;
 		}
@@ -362,14 +399,36 @@ formBtn.addEventListener("click", (e) => {
 			return true;
 		} else {
 			console.log("ko");
+			erreurChampsText(formSpanEmail);
+			formListeEmail.classList.add("formulaire-input-erreur");
 			alert("Email : l'adresse Email n'est pas au bon format ");
+			return false;
+		}
+	}
+	function controlAdresse() {
+		const laAdresse = formulaire_valeurs.adresse;
+		if (regExAdresse(laAdresse)) {
+			console.log("ok");
+			return true;
+		} else {
+			console.log("ko");
+			erreurChampsText(formSpanAdresse);
+			formListeAdresse.classList.add("formulaire-input-erreur");
+			alert("L'adresse : l'adresse postal n'est pas au bon format ");
 			return false;
 		}
 	}
 
 	// --------------------------------------les fonctions de controle
 
-	if (controlPrenom() && controlNom() && controlVille() && controlCodePostal() && controlEmail()) {
+	if (
+		controlPrenom() &&
+		controlNom() &&
+		controlVille() &&
+		controlCodePostal() &&
+		controlEmail() &&
+		controlAdresse()
+	) {
 		localStorage.setItem("dataUser", JSON.stringify(formulaire_valeurs));
 		// mettre les valeurs du formulaire dans le locale storage
 		alert("la commande a bien été lancée");

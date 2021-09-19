@@ -293,9 +293,17 @@ footer span {
 .formulaire label {
 	color: #fff;
 }
+.form-erreur {
+	color: yellow;
+	font-weight: bold;
+}
+
 .formulaire input {
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+.formulaire-input-erreur {
+	background: #c7b22a;
 }
 /* ---------------------------------------------responsive--------------------------------------------- */
 @media screen and (max-width: 870px) {
