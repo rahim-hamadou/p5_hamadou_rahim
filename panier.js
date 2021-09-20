@@ -506,6 +506,7 @@ formBtn.addEventListener("click", (e) => {
 				// si la promesse n'est pas resolue
 			}
 		});
+		// toutes les instruction peuvent etre remplacer par:  envoyerVersLeServer(dataPourServer)
 		// -------------------------voir le resulat de l'envoi POST dans la console
 	} else {
 		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres ");
@@ -517,6 +518,47 @@ formBtn.addEventListener("click", (e) => {
 	// window.location.href = "./panier.html";
 	// // message d'information a l' user et refresh page pour mettre a jour l'affichage
 });
+// // -----------------------creation d'une fonction pour l'envoie vers le server--------------
+// function envoyerVersLeServer(dataPourServer) {
+// 	// ------------------------Envoyer vers le server  de test en fetcth
+// 	const commandeEnvoi = fetch("https://restapi.fr/api/orinounours", {
+// 		// cette API est une API test qui renvoi un ID
+// 		method: "POST",
+// 		body: JSON.stringify(dataPourServer),
+// 		headers: {
+// 			"content-type": "application/json",
+// 		},
+// 	});
+// 	// console.log(commande);
+// 	// verification de l'envoi
+
+// 	// ---------------------------Test de visualisation de la reponse-------------------
+// 	commandeEnvoi.then(async (response) => {
+// 		try {
+// 			const contenuResponse = await response.json();
+// 			console.log("contenuResponse");
+// 			console.log(contenuResponse);
+// 			console.log("contenuResponse.id");
+// 			console.log(contenuResponse._id);
+// 			// ----------------aide a la comprehension en cas d'erreur-------------
+// 			// if (response.ok) {
+// 			// 	console.log(`Resultat de response.ok : ${response.ok}`);
+// 			// } else {
+// 			// 	console.log(`Reponse du server : ${response.status}`);
+// 			// 	alert(`Incident server : Erreur ${response.status}`);
+// 			// }
+// 			// ----------------aide a la comprehension en cas d'erreur----------------
+// 			// si la promesse est resolue
+// 		} catch (e) {
+// 			console.log("Erreur venant de la recuperation commande ");
+// 			console.log(e);
+// 			alert(e);
+// 			// si la promesse n'est pas resolue
+// 		}
+// 	});
+// 	// -------------------------voir le resulat de l'envoi POST dans la console
+// }
+// // -----------------------creation d'une fonction pour l'envoie vers le server--------------
 
 // ---------conserver les données du local storage dans le formulaire ------------
 const dataUserDuLocalStorage = localStorage.getItem("dataUser");
