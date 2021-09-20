@@ -361,7 +361,7 @@ formBtn.addEventListener("click", (e) => {
 		if (regExPrenomNomVille(lePrenom)) {
 			formListePrenom.classList.remove("formulaire-input-erreur");
 			formSpanPrenom.style.display = "none";
-			console.log("ok");
+			// console.log("ok");
 			return true;
 		} else {
 			console.log("ko");
@@ -376,7 +376,7 @@ formBtn.addEventListener("click", (e) => {
 		if (regExPrenomNomVille(leNom)) {
 			formListeNom.classList.remove("formulaire-input-erreur");
 			formSpanNom.style.display = "none";
-			console.log("ok");
+			// console.log("ok");
 			return true;
 		} else {
 			console.log("ko");
@@ -391,7 +391,7 @@ formBtn.addEventListener("click", (e) => {
 		if (regExPrenomNomVille(laVille)) {
 			formListeVille.classList.remove("formulaire-input-erreur");
 			formSpanVille.style.display = "none";
-			console.log("ok");
+			// console.log("ok");
 			return true;
 		} else {
 			console.log("ko");
@@ -406,7 +406,7 @@ formBtn.addEventListener("click", (e) => {
 		if (regExCodePostal(leCodePostal)) {
 			formListeCodePostal.classList.remove("formulaire-input-erreur");
 			formSpanCodePostal.style.display = "none";
-			console.log("ok");
+			// console.log("ok");
 			return true;
 		} else {
 			console.log("ko");
@@ -421,7 +421,7 @@ formBtn.addEventListener("click", (e) => {
 		if (regExEmail(leEmail)) {
 			formListeEmail.classList.remove("formulaire-input-erreur");
 			formSpanEmail.style.display = "none";
-			console.log("ok");
+			// console.log("ok");
 			return true;
 		} else {
 			console.log("ko");
@@ -436,7 +436,7 @@ formBtn.addEventListener("click", (e) => {
 		if (regExAdresse(laAdresse)) {
 			formListeAdresse.classList.remove("formulaire-input-erreur");
 			formSpanAdresse.style.display = "none";
-			console.log("ok");
+			// console.log("ok");
 			return true;
 		} else {
 			console.log("ko");
@@ -462,6 +462,51 @@ formBtn.addEventListener("click", (e) => {
 		alert("la commande a bien été lancée");
 		// message d'information a l'user
 		console.log(controlPrenom());
+		// ------------------------Envoyer les données vers le serveur
+		const dataPourServer = {
+			selectionUserLocalStorage,
+			formulaire_valeurs,
+		};
+		// mettre les données formulaires + les articles panier dans un objet pour le serveur
+		// mettre les valeurs du formulaire et du panier dans le locale storage
+
+		// ------------------------Envoyer vers le server  de test en fetcth
+		const commandeEnvoi = fetch("https://restapi.fr/api/orinounours", {
+			// cette API est une API test qui renvoi un ID
+			method: "POST",
+			body: JSON.stringify(dataPourServer),
+			headers: {
+				"content-type": "application/json",
+			},
+		});
+		// console.log(commande);
+		// verification de l'envoi
+
+		// --------------------------------------Test de visualisation de la reponse--------------------------------
+		commandeEnvoi.then(async (response) => {
+			try {
+				const contenuResponse = await response.json();
+				console.log("contenuResponse");
+				console.log(contenuResponse);
+				console.log("contenuResponse.id");
+				console.log(contenuResponse._id);
+				// ----------------aide a la comprehension en cas d'erreur-------------
+				// if (response.ok) {
+				// 	console.log(`Resultat de response.ok : ${response.ok}`);
+				// } else {
+				// 	console.log(`Reponse du server : ${response.status}`);
+				// 	alert(`Incident server : Erreur ${response.status}`);
+				// }
+				// ----------------aide a la comprehension en cas d'erreur----------------
+				// si la promesse est resolue
+			} catch (e) {
+				console.log("Erreur venant de la recuperation commande ");
+				console.log(e);
+				alert(e);
+				// si la promesse n'est pas resolue
+			}
+		});
+		// -------------------------voir le resulat de l'envoi POST dans la console
 	} else {
 		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres ");
 	}
@@ -471,20 +516,6 @@ formBtn.addEventListener("click", (e) => {
 
 	// window.location.href = "./panier.html";
 	// // message d'information a l' user et refresh page pour mettre a jour l'affichage
-
-	const dataPourServer = {
-		selectionUserLocalStorage,
-		formulaire_valeurs,
-	};
-	// mettre les données formulaires + les articles panier dans un objet pour le serveur
-	// mettre les valeurs du formulaire et du panier dans le locale storage
-
-	// ------------------------Envoyer les données vers le serveur
-
-	console.log(dataPourServer);
-
-	console.log(formulaire_valeurs);
-	console.log(dataPourServer);
 });
 
 // ---------conserver les données du local storage dans le formulaire ------------
