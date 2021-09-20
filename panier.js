@@ -476,12 +476,13 @@ formBtn.addEventListener("click", (e) => {
 		selectionUserLocalStorage,
 		formulaire_valeurs,
 	};
+	// mettre les données formulaires + les articles panier dans un objet pour le serveur
 	// mettre les valeurs du formulaire et du panier dans le locale storage
 
-	// ------------------------controle du formulaire
+	// ------------------------Envoyer les données vers le serveur
 
 	console.log(dataPourServer);
-	// mettre les données formulaires + les articles panier dans un objet pour le serveur
+
 	console.log(formulaire_valeurs);
 	console.log(dataPourServer);
 });
