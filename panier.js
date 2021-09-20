@@ -134,7 +134,8 @@ btnAnnulationPanier.addEventListener("click", (e) => {
 });
 
 // ------------------------------------------calcul de la somme des articles
-
+let prixTotalPanier = "";
+// declaration de la variable prix total
 if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	listeGlobalePanier.appendChild(panierVide);
 	// console.log("je suis vide");
@@ -156,12 +157,15 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 
 	const addition = (accumulator, currentValue) => accumulator + currentValue;
 	// addition des prix contenu dans le tableau avec .reduce
-	const prixTotalPanier = sommePrixProduitPanier.reduce(addition, 0);
+	prixTotalPanier = sommePrixProduitPanier.reduce(addition, 0);
 	// console.log(prixTotalPanier);
 	// application de la fonction reduce + test ok
 
 	totalPanier.innerHTML = "le total du panier est de : " + prixTotalPanier + " €";
 	// affichage dans le html de la somme des prix d'article panier
+
+	// localStorage.setItem("prixTotalPanier", JSON.stringify(prixTotalPanier));
+	// // mettre le prix total dans le locale storage
 
 	// console.log(totalPanier);
 	// voir le prix total du panier
@@ -459,6 +463,9 @@ formBtn.addEventListener("click", (e) => {
 	) {
 		localStorage.setItem("dataUser", JSON.stringify(formulaire_valeurs));
 		// mettre les valeurs du formulaire dans le locale storage
+		localStorage.setItem("prixTotalPanier", JSON.stringify(prixTotalPanier));
+		// mettre le prix total dans le locale storage
+
 		alert("la commande a bien été lancée");
 		// message d'information a l'user
 		console.log(controlPrenom());
@@ -466,6 +473,7 @@ formBtn.addEventListener("click", (e) => {
 		const dataPourServer = {
 			selectionUserLocalStorage,
 			formulaire_valeurs,
+			prixTotalPanier,
 		};
 		// mettre les données formulaires + les articles panier dans un objet pour le serveur
 		// mettre les valeurs du formulaire et du panier dans le locale storage
@@ -499,21 +507,24 @@ formBtn.addEventListener("click", (e) => {
 				// }
 				// ----------------aide a la comprehension en cas d'erreur----------------
 				// si la promesse est resolue
+
+				localStorage.setItem("reponseServerId", contenuResponse._id);
+				// ------mettre l'id de l'envoie vers le server dans le locale storage
+				window.location.href = "./confirmation.html";
+				// redirection vers la page confirmation pour informatio nde commande
 			} catch (e) {
 				console.log("Erreur venant de la recuperation commande ");
 				console.log(e);
 				alert(e);
 				// si la promesse n'est pas resolue
 			}
+			console.log(reponseServerId);
 		});
 		// toutes les instruction peuvent etre remplacer par:  envoyerVersLeServer(dataPourServer)
 		// -------------------------voir le resulat de l'envoi POST dans la console
 	} else {
 		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres ");
 	}
-
-	// localStorage.removeItem("produitUser");
-	// // retrait des articles panier du local storage (cela vide le panier)
 
 	// window.location.href = "./panier.html";
 	// // message d'information a l' user et refresh page pour mettre a jour l'affichage
@@ -585,3 +596,5 @@ if (dataUserObjet !== null) {
 } else {
 }
 // mettre les valeurs de l'objet dataUserobjet dans le formulaire
+
+// -------------------------Page-Confirmation-----------------

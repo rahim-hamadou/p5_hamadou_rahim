@@ -305,6 +305,17 @@ footer span {
 .formulaire-input-erreur {
 	background: #c7b22a;
 }
+
+/* -------------------Confirmation--------------- */
+.confirmation {
+	margin: auto;
+	width: 70%;
+	height: 400px;
+	border: 5px solid black;
+}
+.important {
+	font-weight: bold;
+}
 /* ---------------------------------------------responsive--------------------------------------------- */
 @media screen and (max-width: 870px) {
 	/* main */
