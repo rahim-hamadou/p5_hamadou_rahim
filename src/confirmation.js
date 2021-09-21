@@ -48,7 +48,17 @@ confirmationBloc.appendChild(clotureConfirmation);
 // ------------------------------vider le panier et le local storage------------------------------
 
 // retrait des articles panier du local storage (cela vide le panier)
+// fonction pour vider le local storage
 function nettoyerLocalStorage() {
 	localStorage.removeItem("produitUser");
 	localStorage.removeItem("prixTotalPanier");
 }
+
+// vider le local storage des data d'une commande terminée
+nettoyerLocalStorage();
+
+//  retour a l'acceuil si il ny a pas de commande en cours
+
+// if (reponseId == null || prixTotal == null) {
+// 	window.location.href = "index.html";
+// }
