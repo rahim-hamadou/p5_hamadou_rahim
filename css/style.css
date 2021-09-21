@@ -48,6 +48,7 @@ header {
 }
 
 .header-top {
+	border: 1px solid black;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -87,6 +88,7 @@ header {
 /* ------------------------------------------main --------------------------------------*/
 
 .banner {
+	border: 1px solid black;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -102,6 +104,7 @@ header {
 	position: absolute;
 	background-color: rgb(128, 72, 35);
 	bottom: 0;
+	border: 1px solid black;
 }
 
 .main-choice {
@@ -174,6 +177,7 @@ button {
 /* ---------------------------------------------footer ---------------------------------------------*/
 
 footer {
+	border: 1px solid black;
 	background: rgb(128, 72, 35);
 	bottom: 0;
 	width: 100%;
@@ -208,17 +212,23 @@ footer span {
 /*------------------------------- Panier-recap --------------------------------------*/
 .panier-global {
 	margin: auto;
-	background: beige;
 	width: 90%;
 	height: auto;
 	display: flex;
 	flex-direction: column;
+	border: 2px solid black;
+	border-radius: 15px;
+	overflow: hidden;
 }
 .le-panier {
 	text-align: center;
 	width: auto;
-
-	background: blue;
+	background: rgb(148, 90, 51);
+	font-weight: 900;
+	font-size: 24px;
+	color: #fff;
+	padding: 10px;
+	border-bottom: 1px solid black;
 }
 .panier-vide {
 	margin: auto;
@@ -231,7 +241,6 @@ footer span {
 	/* text-align: center; */
 	width: auto;
 	padding: 0;
-	background: rgb(81, 81, 127);
 }
 .recap-produits li {
 	display: flex;
@@ -248,8 +257,8 @@ footer span {
 	flex-direction: row;
 	align-items: center;
 	width: auto;
-
-	background: rgb(81, 81, 90);
+	border-top: 1px solid black;
+	background: rgb(148, 90, 51);
 }
 .total-prix {
 	text-align: center;
@@ -322,8 +331,7 @@ footer span {
 	background: rgb(128, 72, 35);
 	border-bottom: 2px solid black;
 }
-.confirmation h1 {
-}
+
 .confirmation p:nth-child(5) {
 	background: rgb(128, 72, 35);
 	border-top: 2px solid black;

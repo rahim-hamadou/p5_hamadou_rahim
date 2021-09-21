@@ -11,6 +11,7 @@ const confirmationBloc = document.querySelector(".confirmation");
 
 // recuperation de l'id dans le local storage
 const reponseId = localStorage.reponseServerId;
+
 console.log("L'id crée par le serveur : " + reponseId);
 
 // constante qui servira a recuperé les inofrmations panier
@@ -47,5 +48,7 @@ confirmationBloc.appendChild(clotureConfirmation);
 // ------------------------------vider le panier et le local storage------------------------------
 
 // retrait des articles panier du local storage (cela vide le panier)
-localStorage.removeItem("produitUser");
-localStorage.removeItem("prixTotalPanier");
+function nettoyerLocalStorage() {
+	localStorage.removeItem("produitUser");
+	localStorage.removeItem("prixTotalPanier");
+}

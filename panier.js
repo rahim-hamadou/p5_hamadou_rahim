@@ -523,7 +523,9 @@ formBtn.addEventListener("click", (e) => {
 		// toutes les instruction peuvent etre remplacer par:  envoyerVersLeServer(dataPourServer)
 		// -------------------------voir le resulat de l'envoi POST dans la console
 	} else {
-		alert("Chiffres et Symboles ne sont pas autorisés \n Ne pas depasser 20 caractéres, minimum 3 caractéres ");
+		alert(
+			"Chiffres et Symboles ne sont pas autorisés dans les sections Prenom, Nom, Adresse \nLe code postal possede 5 chiffres et l'email doit contenir un @ \nNe pas depasser 20 caractéres, minimum 3 caractéres ",
+		);
 	}
 
 	// window.location.href = "./panier.html";
