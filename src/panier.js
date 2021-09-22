@@ -200,6 +200,7 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 const formTitre = document.createElement("h2");
 formTitre.innerHTML = "Merci de remplir les informations suivantes pour la commande";
 const formListe = document.createElement("form");
+
 // elements principaux
 
 const prenom = document.createElement("div");
