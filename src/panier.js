@@ -1,6 +1,13 @@
 // declaration de variable a stocker dans le local storage
 let selectionUserLocalStorage = JSON.parse(localStorage.getItem("produitUser"));
 // json.parse afin de convertir au format JavaScript les fichier format JSON du local storage
+// console.log(selectionUserLocalStorage[1].quantite);
+// let testPanier = parseInt(selectionUserLocalStorage[1].quantite) + 1;
+// console.log(testPanier);
+
+// btn incrementation
+
+// const plus = selectionUserLocalStorage[index].quantite;
 
 // console.log(selectionUserLocalStorage);
 // on verifie que parse fonctionne
@@ -52,6 +59,16 @@ totalGlobalPanier.appendChild(finaliserPanier);
 resumePanier.appendChild(totalGlobalPanier);
 
 //-------------------------- ajout du contenu dans la page panier
+
+/*---------------------------
+  Mon commentaire test 
+  Argument 1 - Le panier
+  Argument 1 - Le panier
+  Argument 1 - Le panier
+  Argument 1 - Le panier
+  retourne le resultat
+  --------------------------*/
+
 // console.log(resumePanier);
 
 // creation dynamique du panier
@@ -113,6 +130,7 @@ for (let i = 0; i < listeBtnProduitPanier.length; i++) {
 		localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
 		// envoie de la nouvelle valeur de la variable vers le locale storage
 		// console.log(selectionUserLocalStorage);
+
 		alert("la selection a bien été supprimée");
 		// message d'information a l'user
 		window.location.href = "./panier.html";
@@ -204,6 +222,7 @@ formListePrenom.setAttribute("type", "text");
 formListePrenom.setAttribute("name", "prenom");
 formListePrenom.setAttribute("required", "");
 formListePrenom.setAttribute("id", "prenom");
+formListePrenom.setAttribute("placeholder", "Votre prenom");
 // prenom
 const nom = document.createElement("div");
 const formListeNomLabel = document.createElement("label");
@@ -216,6 +235,7 @@ formListeNom.setAttribute("type", "text");
 formListeNom.setAttribute("name", "nom");
 formListeNom.setAttribute("required", "");
 formListeNom.setAttribute("id", "nom");
+formListeNom.setAttribute("placeholder", "Votre nom");
 // nom
 const adresse = document.createElement("div");
 const formListeAdresseLabel = document.createElement("label");
@@ -228,6 +248,7 @@ formListeAdresse.setAttribute("type", "text");
 formListeAdresse.setAttribute("name", "adresse");
 formListeAdresse.setAttribute("required", "");
 formListeAdresse.setAttribute("id", "adresse");
+formListeAdresse.setAttribute("placeholder", "Votre adresse");
 // adresse
 const ville = document.createElement("div");
 const formListeVilleLabel = document.createElement("label");
@@ -240,6 +261,7 @@ formListeVille.setAttribute("type", "text");
 formListeVille.setAttribute("name", "ville");
 formListeVille.setAttribute("required", "");
 formListeVille.setAttribute("id", "ville");
+formListeVille.setAttribute("placeholder", "Votre ville");
 // ville
 const codePostal = document.createElement("div");
 const formListeCodePostalLabel = document.createElement("label");
@@ -252,6 +274,7 @@ formListeCodePostal.setAttribute("type", "number");
 formListeCodePostal.setAttribute("name", "codeP");
 formListeCodePostal.setAttribute("required", "");
 formListeCodePostal.setAttribute("id", "codeP");
+formListeCodePostal.setAttribute("placeholder", "Votre code postal");
 // code postal
 const email = document.createElement("div");
 const formListeEmailLabel = document.createElement("label");
@@ -264,6 +287,7 @@ formListeEmail.setAttribute("type", "mail");
 formListeEmail.setAttribute("name", "mail");
 formListeEmail.setAttribute("required", "");
 formListeEmail.setAttribute("id", "email");
+formListeEmail.setAttribute("placeholder", "Votre email");
 // email
 const btn_form = document.createElement("div");
 

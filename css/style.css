@@ -297,7 +297,7 @@ footer span {
 	margin: 10px auto;
 	display: flex;
 	flex-direction: column;
-	width: 70%;
+	width: 50%;
 }
 .formulaire label {
 	color: #fff;
@@ -343,6 +343,7 @@ footer span {
 }
 /* ---------------------------------------------responsive--------------------------------------------- */
 @media screen and (max-width: 870px) {
+	/* Page index */
 	/* main */
 
 	.main-choice-products ul {
@@ -363,9 +364,24 @@ footer span {
 		margin-bottom: 15px;
 		width: 90%;
 	}
-	/* confirmation */
+	/* Page panier */
+
+	/* .formulaire form div {
+		max-width: 70%;
+	} */
+
+	/* Pageconfirmation */
 
 	.confirmation {
 		width: 100%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	/* Page panier  */
+	.recap-produits li p {
+		margin: 0 5px;
+	}
+	.formulaire form input {
 	}
 }
