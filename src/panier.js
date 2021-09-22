@@ -44,7 +44,7 @@ btnValidationPanier.innerHTML = "Commander";
 // validation pour commande
 const btnAnnulationPanier = document.createElement("button");
 btnAnnulationPanier.classList.add("annulation");
-btnAnnulationPanier.innerHTML = "Annuler";
+btnAnnulationPanier.innerHTML = "Vider le panier";
 // annulation pour vider le panier
 // creation des btn de finalisation
 
@@ -59,15 +59,6 @@ totalGlobalPanier.appendChild(finaliserPanier);
 resumePanier.appendChild(totalGlobalPanier);
 
 //-------------------------- ajout du contenu dans la page panier
-
-/*---------------------------
-  Mon commentaire test 
-  Argument 1 - Le panier
-  Argument 1 - Le panier
-  Argument 1 - Le panier
-  Argument 1 - Le panier
-  retourne le resultat
-  --------------------------*/
 
 // console.log(resumePanier);
 

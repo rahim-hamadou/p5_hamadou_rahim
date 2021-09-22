@@ -230,7 +230,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 							"x" +
 							quantiteUserProduit +
 							") " +
-							" à bien été ajouté au panier consulter le panier avec OK ou retourner à l'accueil avec ANNULER",
+							" à bien été ajouté au panier consulter le PANIER avec OK ou retourner à l'ACCUEIL avec ANNULER",
 					)
 				) {
 					window.location.href = "./panier.html";

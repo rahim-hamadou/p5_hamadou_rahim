@@ -231,6 +231,7 @@ footer span {
 	border-bottom: 1px solid black;
 }
 .panier-vide {
+	color: #fff;
 	margin: auto;
 }
 .recap-produits {
@@ -326,17 +327,23 @@ footer span {
 	width: 70%;
 	border: 2px solid black;
 }
+.confirmation p {
+	text-align: center;
+	padding: 0 15px;
+}
 .entete-confirmation {
 	width: 100%;
 	background: rgb(128, 72, 35);
 	border-bottom: 2px solid black;
 }
 
-.confirmation p:nth-child(5) {
+.confirmation p:nth-child(6) {
 	background: rgb(128, 72, 35);
 	border-top: 2px solid black;
 	margin-bottom: 0;
 	padding-bottom: 10px;
+	font-size: 22px;
+	font-weight: 500;
 }
 .important {
 	font-weight: bold;
