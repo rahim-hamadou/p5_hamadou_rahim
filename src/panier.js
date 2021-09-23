@@ -89,10 +89,12 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 		// verifier la presence d'un article dans le panier
 		/* AJOUT gestion de la quantite */
 		const inputNbProducts = document.createElement("input");
-		inputNbProducts.setAttribute("type", "text");
+		inputNbProducts.setAttribute("type", "number");
 		inputNbProducts.setAttribute("name", "nb_products");
 		inputNbProducts.setAttribute("required", "");
 		inputNbProducts.setAttribute("maxlength", "2");
+		inputNbProducts.setAttribute("onKeyPress", "if(this.value.length==2) return false;");
+		inputNbProducts.setAttribute("max", "10");
 		inputNbProducts.setAttribute("class", "nb_products");
 		inputNbProducts.setAttribute("id", "nb_products_" + i.toString());
 		inputNbProducts.setAttribute("placeholder", "Quantité");
@@ -426,6 +428,9 @@ formBtn.addEventListener("click", (e) => {
 	// expression de fonction regex pour le prenom , nom et ville
 	const regExAdresse = (valeur) => {
 		return /^[A-Za-z0-9\s]{5,50}$/.test(valeur);
+	};
+	const regExQuantite = (valeur) => {
+		return /^[1-9]{1}$/.test(valeur);
 	};
 	// expression de fonction regex pour l'adresse
 

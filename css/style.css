@@ -396,4 +396,9 @@ footer span {
 	}
 	.formulaire form input {
 	}
+
+	/* Page confirmation */
+	.confirmation h2 {
+		padding: 0 10px;
+	}
 }
