@@ -152,7 +152,7 @@ if (selectionUserLocalStorage.quantite == null || selectionUserLocalStorage.quan
 
 for (let i = 0; i < selectionUserLocalStorage.length; i++) {
 	if (selectionUserLocalStorage[i].quantite == null || selectionUserLocalStorage[i].quantite == 0) {
-		alert("Cet article ne fera pas parti de la commande si la quantité est a zero");
+		alert("Cet article ne sera pas commandé si la quantité est à zero");
 	}
 }
 
