@@ -234,6 +234,10 @@ footer span {
 	color: #fff;
 	margin: auto;
 }
+
+.nb_products {
+	max-width: 145px;
+}
 .recap-produits {
 	display: flex;
 	flex-direction: column;
@@ -373,9 +377,10 @@ footer span {
 	}
 	/* Page panier */
 
-	/* .formulaire form div {
-		max-width: 70%;
-	} */
+	.recap-produits li {
+		display: flex;
+		flex-direction: column;
+	}
 
 	/* Pageconfirmation */
 

@@ -82,16 +82,30 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 			selectionUserLocalStorage[i].quantite +
 			") " +
 			" au prix de : " +
-			selectionUserLocalStorage[i].prix +
+			selectionUserLocalStorage[i].prix * selectionUserLocalStorage[i].quantite +
 			" €";
 		// const incrementationProduit = document.createElement("input");
 		// listeDetailProduitPanier.appendChild(incrementationProduit);
 		// verifier la presence d'un article dans le panier
+		/* AJOUT DENIS */
+		const inputNbProducts = document.createElement("input");
+		inputNbProducts.setAttribute("type", "text");
+		inputNbProducts.setAttribute("name", "nb_products");
+		inputNbProducts.setAttribute("required", "");
+		inputNbProducts.setAttribute("maxlength", "2");
+		inputNbProducts.setAttribute("class", "nb_products");
+		inputNbProducts.setAttribute("id", "nb_products_" + i.toString());
+		inputNbProducts.setAttribute("placeholder", "Quantité");
+		inputNbProducts.value = selectionUserLocalStorage[i].quantite;
+		/*FIN AJOUT */
 		const btnProduitPanier = document.createElement("button");
 		btnProduitPanier.classList.add = "btn-produit-panier";
 		btnProduitPanier.innerHTML = "Supprimer l'article";
 
 		listeProduitPanier.appendChild(listeDetailProduitPanier);
+		/* AJOUT DENIS */
+		listeProduitPanier.appendChild(inputNbProducts);
+		/*FIN AJOUT */
 		listeProduitPanier.appendChild(btnProduitPanier);
 		listeGlobalePanier.appendChild(listeProduitPanier);
 
@@ -105,29 +119,55 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 let listeBtnProduitPanier = document.querySelectorAll(".recap-produits li button ");
 // console.log(listeBtnProduitPanier);
 // creation d'une liste btn suppression d'article
+if (selectionUserLocalStorage.quantite == null || selectionUserLocalStorage.quantite == 0) {
+	for (let i = 0; i < listeBtnProduitPanier.length; i++) {
+		listeBtnProduitPanier[i].addEventListener("click", (e) => {
+			e.preventDefault();
+			let idProduitSuppression = selectionUserLocalStorage[i];
+			// let idProduitSuppression = selectionUserLocalStorage[i].idProduit;
+			// creation de la variable de l'id du produit au clique du btn
 
-for (let i = 0; i < listeBtnProduitPanier.length; i++) {
-	listeBtnProduitPanier[i].addEventListener("click", (e) => {
-		e.preventDefault();
-		let idProduitSuppression = selectionUserLocalStorage[i].idProduit;
-		// creation de la variable de l'id du produit au clique du btn
+			console.log(selectionUserLocalStorage);
+			selectionUserLocalStorage = selectionUserLocalStorage.filter(
+				(element) => element !== idProduitSuppression,
+				// (element) => element.idProduit !== idProduitSuppression,
+			);
+			//creation d'une fonction de suppression par elimination
+			// console.log(selectionUserLocalStorage);
 
-		selectionUserLocalStorage = selectionUserLocalStorage.filter(
-			(element) => element.idProduit !== idProduitSuppression,
-		);
-		//creation d'une fonction de suppression par elimination
-		// console.log(selectionUserLocalStorage);
+			localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
+			// envoie de la nouvelle valeur de la variable vers le locale storage
+			// console.log(selectionUserLocalStorage);
 
+			alert("la selection a bien été supprimée");
+			// message d'information a l'user
+			window.location.href = "./panier.html";
+			// message d'information a l'user et refresh page pour mettre a jour l'affichage
+		});
+	}
+}
+
+/* AJOUT DENIS */
+// -------------------------mise à jour du localStorage si modification du nombre d'articles
+let nb_products = document.getElementsByClassName("nb_products");
+console.log("nb_products=" + nb_products.length);
+for (let i = 0; i < nb_products.length; i++) {
+	nb_products[i].addEventListener("change", (e) => {
+		console.log("avant classname " + selectionUserLocalStorage[i].quantite);
+		//validation de l'input
+
+		//modif du selectionUserLocalStorage
+		let nb_product = document.getElementById("nb_products_" + i.toString());
+		selectionUserLocalStorage[i].quantite = parseInt(nb_product.value);
+
+		localStorage.removeItem("produitUser");
+		console.log("apres classname " + selectionUserLocalStorage[i].quantite);
 		localStorage.setItem("produitUser", JSON.stringify(selectionUserLocalStorage));
-		// envoie de la nouvelle valeur de la variable vers le locale storage
-		// console.log(selectionUserLocalStorage);
 
-		alert("la selection a bien été supprimée");
-		// message d'information a l'user
-		window.location.href = "./panier.html";
-		// message d'information a l'user et refresh page pour mettre a jour l'affichage
+		window.location.reload();
 	});
 }
+/*FIN AJOUT */
 
 // ------------------------creation d'un btn vider le panier afin de supprimer le produit par son id
 
@@ -155,15 +195,17 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 } else {
 	let sommePrixProduitPanier = [];
 	for (let i = 0; i < selectionUserLocalStorage.length; i++) {
-		let prixProduitPanier = selectionUserLocalStorage[i].prix;
+		let prixProduitPanier = selectionUserLocalStorage[i].prix * selectionUserLocalStorage[i].quantite;
 		// creation d ela variable qui regroupe les prix
-		// console.log(sommePrixProduitPanier);
+		console.log("sommePrixProduitPanier.prix");
+		console.log(sommePrixProduitPanier);
 		// verification de l'affichage du prix d'article
 
 		sommePrixProduitPanier.push(prixProduitPanier);
 		// mettre tous les prix dans un tableau
+		console.log("sommePrixProduitPanier");
+		console.log(sommePrixProduitPanier);
 	}
-
 	const addition = (accumulator, currentValue) => accumulator + currentValue;
 	// addition des prix contenu dans le tableau avec .reduce
 	prixTotalPanier = sommePrixProduitPanier.reduce(addition, 0);
@@ -173,6 +215,8 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 	totalPanier.innerHTML = "le total du panier est de : " + prixTotalPanier + " €";
 	// affichage dans le html de la somme des prix d'article panier
 
+	console.log("totalPanier");
+	console.log(totalPanier);
 	// localStorage.setItem("prixTotalPanier", JSON.stringify(prixTotalPanier));
 	// // mettre le prix total dans le locale storage
 

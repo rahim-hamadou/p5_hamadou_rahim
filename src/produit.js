@@ -188,9 +188,7 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 			const nameUserProduit = dataProduit.name;
 			const idUserProduit = id;
 			const couleurUserProduit = choixUserCouleur;
-
 			const quantiteUserProduit = quantiteProduitChoix.value;
-
 			const prixUserProduit = dataProduit.price / 100;
 			// creation des const servant a creer l'objet selectionUser
 
@@ -199,7 +197,8 @@ let ficheProduit = fetch("http://localhost:3000/api/teddies/" + id)
 				idProduit: idUserProduit,
 				optionCouleur: couleurUserProduit,
 				quantite: quantiteUserProduit,
-				prix: prixUserProduit * quantiteUserProduit,
+				prix: prixUserProduit,
+				// prix: prixUserProduit * quantiteUserProduit,
 			};
 			console.log(selectionUser);
 
