@@ -87,7 +87,7 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 		// const incrementationProduit = document.createElement("input");
 		// listeDetailProduitPanier.appendChild(incrementationProduit);
 		// verifier la presence d'un article dans le panier
-		/* AJOUT DENIS */
+		/* AJOUT gestion de la quantite */
 		const inputNbProducts = document.createElement("input");
 		inputNbProducts.setAttribute("type", "text");
 		inputNbProducts.setAttribute("name", "nb_products");
@@ -97,19 +97,20 @@ if (selectionUserLocalStorage === null || selectionUserLocalStorage == 0) {
 		inputNbProducts.setAttribute("id", "nb_products_" + i.toString());
 		inputNbProducts.setAttribute("placeholder", "Quantité");
 		inputNbProducts.value = selectionUserLocalStorage[i].quantite;
-		/*FIN AJOUT */
+		/*AJOUT gestion de la quantite  */
 		const btnProduitPanier = document.createElement("button");
 		btnProduitPanier.classList.add = "btn-produit-panier";
 		btnProduitPanier.innerHTML = "Supprimer l'article";
 
 		listeProduitPanier.appendChild(listeDetailProduitPanier);
-		/* AJOUT DENIS */
+		/* AJOUT input quantite */
 		listeProduitPanier.appendChild(inputNbProducts);
-		/*FIN AJOUT */
+		/*FIN AJOUT input quantite */
 		listeProduitPanier.appendChild(btnProduitPanier);
 		listeGlobalePanier.appendChild(listeProduitPanier);
 
 		// console.log(selectionUserLocalStorage.length);
+
 		// voir la taille du tableau
 	}
 	console.log("je ne suis pas vide");
@@ -141,13 +142,22 @@ if (selectionUserLocalStorage.quantite == null || selectionUserLocalStorage.quan
 
 			alert("la selection a bien été supprimée");
 			// message d'information a l'user
-			window.location.href = "./panier.html";
+			window.location.reload();
 			// message d'information a l'user et refresh page pour mettre a jour l'affichage
 		});
 	}
 }
 
-/* AJOUT DENIS */
+// creation d'une condition pour supprimer la ligne si la quantite est null ou a zero
+
+for (let i = 0; i < selectionUserLocalStorage.length; i++) {
+	if (selectionUserLocalStorage[i].quantite == null || selectionUserLocalStorage[i].quantite == 0) {
+		alert("Cet article ne fera pas parti de la commande si la quantité est a zero");
+	}
+}
+
+// creation d'une condition pour supprimer la ligne si la quantite est null ou a zero
+/* AJOUT fonction quantite*/
 // -------------------------mise à jour du localStorage si modification du nombre d'articles
 let nb_products = document.getElementsByClassName("nb_products");
 console.log("nb_products=" + nb_products.length);
@@ -167,7 +177,7 @@ for (let i = 0; i < nb_products.length; i++) {
 		window.location.reload();
 	});
 }
-/*FIN AJOUT */
+/*FIN AJOUT fonction quantite */
 
 // ------------------------creation d'un btn vider le panier afin de supprimer le produit par son id
 
