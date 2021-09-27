@@ -86,7 +86,15 @@ header {
 }
 
 /* ------------------------------------------main --------------------------------------*/
-
+.erreur-chargement {
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 15px;
+	font-size: smaller;
+	width: 60%;
+	padding: 10px;
+	background: rgb(148, 90, 51);
+}
 .banner {
 	border: 1px solid black;
 	position: relative;

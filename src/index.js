@@ -25,8 +25,10 @@ import retrieveContent from "./query.js";
 const liste = document.querySelector(".liste");
 const btn = document.querySelector(".btn");
 const mainTitle = document.querySelector(".main-title");
+const container = document.querySelector(".container-principal");
+const erreurChargement = document.createElement("h2");
+erreurChargement.classList.add("erreur-chargement");
 //on lie les elements HTML a des variables JS
-console.log(mainTitle);
 
 // btn.addEventListener("click", () => {
 // 	mainTitle.textContent = "Ils sont trop mignons";
@@ -118,5 +120,11 @@ fetch("http://localhost:3000/api/teddies")
 		}
 
 		//-----------------------------------page produit
+	})
+	.catch(function (error) {
+		container.appendChild(erreurChargement);
+		erreurChargement.innerHTML =
+			"Une erreur est survenu lors du chargement des produits. Nous sommes en train de nous en occupez, veuillez revenir plus tard.\n Merci de votre comprehension";
+		console.log("Il y a eu un problème avec l'opération fetch: " + error.message);
 	});
 // });
